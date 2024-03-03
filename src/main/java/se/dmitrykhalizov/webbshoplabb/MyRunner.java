@@ -21,5 +21,6 @@ public class MyRunner implements CommandLineRunner {
     @Override
     public void run(String[] args) throws Exception {
         System.out.println("HALLO");
+        System.out.println("HALLO AGAIN");
     }
 }
