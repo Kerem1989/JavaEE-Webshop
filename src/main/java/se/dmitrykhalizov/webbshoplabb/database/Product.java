@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="productid")
     private int id;
     @Column(name="name")
     private String name;
