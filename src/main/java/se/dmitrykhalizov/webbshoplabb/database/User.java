@@ -30,11 +30,6 @@ public class User {
     private EnumSelection status;
 
 
-    // ONE-TO-MANY USER - PRODUCT
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="id")
-    private List<Product> products = new ArrayList<>();
-
     // ONE-TO-ONE USER - ORDER
     @OneToOne
     @JoinColumn(name="orderid")
@@ -130,14 +125,6 @@ public class User {
         this.status = status;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
     public Order getOrder() {
         return order;
     }
@@ -166,8 +153,6 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +
-
-                ", products=" + products +
                 ", order=" + order +
                 ", customerbasket=" + customerbasket +
                 '}';
