@@ -2,6 +2,8 @@ package se.dmitrykhalizov.webbshoplabb.database;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="product")
 public class Product {
@@ -20,29 +22,20 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
 
-    // MANY-TO-ONE PRODUCT - USER
-    @ManyToOne
-    @JoinColumn(name="userid")
-    private User user;
-
-    // MANY-TO-ONE PRODUCT - ORDER
-    @ManyToOne
-    @JoinColumn(name="orderid")
-    private Order order;
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private List<Orderline> orderlines;
 
     public Product() {
     }
 
     public Product(int id, String name, String description, double price, int quantity,
-                   EnumSelection status, User user, Order order) {
+                   EnumSelection status) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.status = status;
-        this.user = user;
-
     }
 
     public int getId() {
@@ -89,22 +82,6 @@ public class Product {
         this.status = status;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
     @Override
     public String toString() {
         return "Product{" +
@@ -114,8 +91,6 @@ public class Product {
                 ", price=" + price +
                 ", quantity=" + quantity +
                 ", status=" + status +
-                ", user=" + user +
-                ", order=" + order +
                 '}';
     }
 }

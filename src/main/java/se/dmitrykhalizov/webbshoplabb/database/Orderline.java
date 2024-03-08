@@ -11,19 +11,20 @@ public class Orderline {
     private int id;
     @Column(name="order")
     private int order;
-    @Column(name="product")
-    private int product;
     @Column(name="quantity")
     private int quantity;
     @Column(name="totalprice")
     private double totalprice;
 
+    @ManyToOne
+    @JoinColumn(name = "product", referencedColumnName = "productid", nullable = false)
+    private Product product;
 
 
     public Orderline() {
     }
 
-    public Orderline(int id, int order, int product, int quantity, double totalprice) {
+    public Orderline(int id, int order, Product product, int quantity, double totalprice) {
         this.id = id;
         this.order = order;
         this.product = product;
@@ -43,11 +44,11 @@ public class Orderline {
         this.order = order;
     }
 
-    public int getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(int product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 

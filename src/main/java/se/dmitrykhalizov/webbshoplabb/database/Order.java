@@ -27,11 +27,6 @@ public class Order {
     @JoinColumn(name="id")
     private User user;
 
-    // ONE-TO-MANY ORDER - PRODUCT
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    private List<Product>products = new ArrayList<>();
-
 
     public Order() {
     }
@@ -87,14 +82,6 @@ public class Order {
         this.user = user;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
     @Override
     public String toString() {
         return "Order{" +
@@ -104,7 +91,6 @@ public class Order {
                 ", status=" + status +
                 ", totalprice=" + totalprice +
                 ", user=" + user +
-                ", products=" + products +
                 '}';
     }
 }
