@@ -1,5 +1,7 @@
 package se.dmitrykhalizov.webbshoplabb.database;
 
+import org.springframework.stereotype.Service;
+
 public enum EnumSelection {
     customer,
     admin,
@@ -7,7 +9,10 @@ public enum EnumSelection {
     discountinued,
     pending,
     shipped,
-    delivered;
+    delivered,
+    ok,
+
+    denied;
 
 
 }
