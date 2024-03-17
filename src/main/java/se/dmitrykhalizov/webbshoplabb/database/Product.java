@@ -38,6 +38,14 @@ public class Product {
         this.status = status;
     }
 
+    public Product(String name, String description, double price, int quantity, EnumSelection status) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.status = status;
+    }
+
     public int getId() {
         return id;
     }
