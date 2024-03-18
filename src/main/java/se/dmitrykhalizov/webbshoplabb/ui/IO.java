@@ -29,4 +29,27 @@ public class IO {
 
         return userInput;
     }
+
+    public static int getValidIntegerInput(Scanner input, int minValue, int maxValue) {
+        int userInput = 0;
+        boolean isUserInputInvalid;
+
+        do {
+            isUserInputInvalid = false;
+            try {
+                userInput = input.nextInt();
+                if (userInput < minValue || userInput > maxValue) {
+                    System.out.println("Invalid entry, please enter a number between " + minValue + " and " + maxValue + "...");
+                    isUserInputInvalid = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid entry, please enter a number between " + minValue + " and " + maxValue + "...");
+                isUserInputInvalid = true;
+            }
+            input.nextLine();
+        } while (isUserInputInvalid);
+
+        return userInput;
+    }
+
 }
