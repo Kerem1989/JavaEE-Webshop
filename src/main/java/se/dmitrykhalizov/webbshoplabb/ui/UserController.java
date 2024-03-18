@@ -22,7 +22,7 @@ public class UserController {
 
         EnumSelection user = userService.login(username, password);
         if (user == EnumSelection.ok) {
-            return "testpage";
+            return "menupage";
         } else {
             return "showloginpage";
         }
