@@ -7,9 +7,8 @@
 <body>
 <form method="post" action="/login" form class="login-form">
     <img src="/images/TR.png" alt="Flowers in Chania">
-    <p>Enter username and password</p>
-    <input type="text" name="username" value="" size="8"></input> <br/>
-    <input type="text" name="password" value="" size="8"></input> <br/>
+    <p style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 10px; border: 1px solid #ccc; border-radius: 5px; color: #333;">Please login</p>    <input type="text" name="username" placeholder="Enter username" size="8"></input> <br/>
+    <input type="password" name="password" placeholder="Enter password" size="8"></input>
     <input type="Submit" value="Login"></input>
     <style>
         .login-form {
@@ -36,5 +35,8 @@
     </style>
 
 </form>
+<div style="width: 300px; margin: 0 auto;">
+    <p style="text-align: center; border: 2px solid #4CAF50; padding: 10px; background-color: #f9f9f9; border-radius: 10px; font-size: 18px; box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);">Status: <span th:text="${resultlogin}"></span></p>
+</div>
 </body>
 </html>

@@ -10,9 +10,5 @@ public enum EnumSelection {
     pending,
     shipped,
     delivered,
-    ok,
-
-    denied;
-
 
 }
