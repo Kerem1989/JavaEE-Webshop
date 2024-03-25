@@ -1,4 +1,4 @@
-package se.dmitrykhalizov.webbshoplabb.database;
+package se.dmitrykhalizov.webbshoplabb.entity;
 
 import jakarta.persistence.*;
 
@@ -16,11 +16,6 @@ public class Customerbasket {
     private int product;
     @Column(name="totalprice")
     private double totalprice;
-
-    // ONE-TO-ONE CUSTOMERBASKET - USER
-    @OneToOne
-    @JoinColumn(name = "id")
-    private User user;
 
 
     public Customerbasket(){
@@ -61,15 +56,6 @@ public class Customerbasket {
         this.totalprice = totalprice;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-
     @Override
     public String toString() {
         return "Customerbasket{" +
@@ -77,8 +63,6 @@ public class Customerbasket {
                 ", customer=" + customer +
                 ", product=" + product +
                 ", totalprice=" + totalprice +
-                ", user=" + user +
-
                 '}';
     }
 }

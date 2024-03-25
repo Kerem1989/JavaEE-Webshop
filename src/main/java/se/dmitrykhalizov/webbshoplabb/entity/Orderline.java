@@ -1,4 +1,4 @@
-package se.dmitrykhalizov.webbshoplabb.database;
+package se.dmitrykhalizov.webbshoplabb.entity;
 
 import jakarta.persistence.*;
 

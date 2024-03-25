@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import se.dmitrykhalizov.webbshoplabb.entity.EnumSelection;
+import se.dmitrykhalizov.webbshoplabb.entity.User;
 import se.dmitrykhalizov.webbshoplabb.service.UserService;
 
 @Controller
@@ -24,8 +26,10 @@ public class UserController {
 
         String user = userService.login(username, password);
         model.addAttribute("resultlogin", user);
-        if (user.equals("ok")) {
-            return "menupage";
+        if (user.equals("ok") && userService.getUser().getStatus().equals(EnumSelection.admin)) {
+            return "menupageadmin";
+        } else if (user.equals("ok") && userService.getUser().getStatus().equals(EnumSelection.customer)) {
+            return "menupagecustomer";
         }
         return "showloginpage";
     }

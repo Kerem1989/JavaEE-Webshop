@@ -1,10 +1,8 @@
-package se.dmitrykhalizov.webbshoplabb.database;
+package se.dmitrykhalizov.webbshoplabb.entity;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="order")

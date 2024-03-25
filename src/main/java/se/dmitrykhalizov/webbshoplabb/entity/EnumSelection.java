@@ -1,6 +1,4 @@
-package se.dmitrykhalizov.webbshoplabb.database;
-
-import org.springframework.stereotype.Service;
+package se.dmitrykhalizov.webbshoplabb.entity;
 
 public enum EnumSelection {
     customer,

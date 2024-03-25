@@ -1,9 +1,6 @@
-package se.dmitrykhalizov.webbshoplabb.database;
+package se.dmitrykhalizov.webbshoplabb.entity;
 
 import jakarta.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -28,17 +25,6 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
-
-
-    // ONE-TO-ONE USER - ORDER
-    @OneToOne
-    @JoinColumn(name="orderid")
-    private Order order;
-
-    // ONE-TO-ONE USER - CUSTOMERBASKET
-    @OneToOne
-    @JoinColumn(name="customerbasketid")
-    private Customerbasket customerbasket;
 
     public User() {
     }
@@ -125,22 +111,6 @@ public class User {
         this.status = status;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Customerbasket getCustomerbasket() {
-        return customerbasket;
-    }
-
-    public void setCustomerbasket(Customerbasket customerbasket) {
-        this.customerbasket = customerbasket;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -153,8 +123,6 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +
-                ", order=" + order +
-                ", customerbasket=" + customerbasket +
                 '}';
     }
 }
