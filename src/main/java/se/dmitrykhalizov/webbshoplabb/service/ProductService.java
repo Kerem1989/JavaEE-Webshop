@@ -21,8 +21,9 @@ public class ProductService {
         this.io = io;
     }
 
-    public String create(String name, String description, double price,
-                         int quantity, EnumSelection status) {
+    public String createProduct(String name, String description, double price,
+                                int quantity, EnumSelection status) {
+
         productRepo.save(new Product(name, description, price, quantity, status));
         return "Saved";
     }
@@ -30,6 +31,7 @@ public class ProductService {
     public List<Product> displayProducts() {
         return productRepo.findAll();
     }
+
 
 
 }

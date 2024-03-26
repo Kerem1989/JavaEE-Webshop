@@ -21,10 +21,10 @@ public class WebbshopLabbApplication {
         SpringApplication.run(WebbshopLabbApplication.class, args);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
+/*    @EventListener(ApplicationReadyEvent.class)
     public void sendMail() {
 		senderService.sendEmail("kerem.tazedal89@gmail.com",
                 				"Hello from Kerem Dmitry Webbshop Labb!",
 								"This is a test email from Spring Boot as part of the Webbshop Labb project.");
-	}
+	}*/
 }
