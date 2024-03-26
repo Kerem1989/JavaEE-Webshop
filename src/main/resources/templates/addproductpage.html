@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Please add your product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            width: 350px;
+            background-color: #6A5ACD;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-form p {
+            text-align: center;
+        }
+
+        .login-form input[type='text'],
+        .login-form select {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .login-form input[type='submit'] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .login-form input[type='submit']:hover {
+            background-color: #45a049;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-form">
+    <div class="logo">
+        <img src="/images/TR.png" alt="TR logo">
+    </div>
+    <h1>Please add your product</h1>
+    <form method="post" action="/addproduct">
+        <p>Please fill in the form</p>
+        <input type="text" name="name" placeholder="Enter product name" required><br/>
+        <input type="text" name="description" placeholder="Enter description" required><br/>
+        <input type="text" name="price" placeholder="Enter price" pattern="[0-9]+" title="Only numbers allowed" required><br/>
+        <input type="text" name="quantity" placeholder="Enter quantity" pattern="[0-9]+" title="Only numbers allowed" required><br/>
+        <label for="status">Status:</label><br/>
+        <select id="status" name="status" required>
+            <option value="active">Active</option>
+            <option value="discountinued">Discountinued</option>
+        </select><br/>
+        <input type="Submit" value="Add product">
+    </form>
+    <p>Status: <span th:text="${resultAddProduct}"></span></p>
+</div>
+</body>
+</html>
