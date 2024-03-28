@@ -29,9 +29,8 @@ public class User {
     public User() {
     }
 
-    public User(int userid, String firstname, String surname, String email, String address, String telephone,
+    public User(String firstname, String surname, String email, String address, String telephone,
                 String username, String password, EnumSelection status) {
-        this.userid = userid;
         this.firstname = firstname;
         this.surname = surname;
         this.email = email;
