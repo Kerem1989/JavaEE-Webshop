@@ -33,6 +33,21 @@ public class UserController {
         }
         return "showloginpage";
     }
+
+    @GetMapping("register")
+    public String registerForm(Model model) {
+        model.addAttribute("resultregister", "");
+        return "registeruser";
+    }
+
+    @PostMapping("register")
+    public String addToRegisterForm(@RequestParam String firstname, @RequestParam String surname,
+                                    @RequestParam String email, @RequestParam String address, @RequestParam String telephone,
+                                    @RequestParam String username, @RequestParam String password, EnumSelection status, Model model) {
+        String resultRegister = userService.register(firstname, surname, email, address, telephone, username, password, status);
+        model.addAttribute("resultregister", resultRegister);
+        return "registeruser";
+    }
 }
 
 

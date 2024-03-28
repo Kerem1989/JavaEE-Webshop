@@ -5,6 +5,7 @@ import se.dmitrykhalizov.webbshoplabb.entity.User;
 
 public interface UserRepo extends JpaRepository<User, Integer> {
     boolean existsUserByUsernameAndPassword(String username, String password);
+    boolean existsUserByUsername(String username);
     User findUserByUsernameAndPassword(String username, String password);
     boolean existsUserByUserid(int id);
 }
