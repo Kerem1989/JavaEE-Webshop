@@ -2,6 +2,9 @@ package se.dmitrykhalizov.webbshoplabb.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name="customerbasket")
@@ -10,34 +13,41 @@ public class Customerbasket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="customerbasketid")
     private int customerbasketid;
-    @Column(name="customer")
-    private int customer;
+
+    //One-to-One relationship with user
+    @OneToOne
+    @JoinColumn(name="customer")
+    private User user;
+
     @Column(name="product")
     private int product;
     @Column(name="totalprice")
     private double totalprice;
 
+    //One-to-Many relationship with product
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "customerbasket")
+    private List<Product> products;
 
     public Customerbasket(){
     }
 
-    public Customerbasket(int customerbasketid, int customer, int product, double totalprice) {
+    public Customerbasket(int customerbasketid, User user, int product, double totalprice) {
         this.customerbasketid = customerbasketid;
-        this.customer = customer;
+        this.user = user;
         this.product = product;
         this.totalprice = totalprice;
     }
 
-    public int getcustomerbasketid() {
+    public int getCustomerbasketid() {
         return customerbasketid;
     }
 
-    public int getCustomer() {
-        return customer;
+    public User getUser() {
+        return user;
     }
 
-    public void setCustomer(int customer) {
-        this.customer = customer;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getProduct() {
@@ -60,7 +70,7 @@ public class Customerbasket {
     public String toString() {
         return "Customerbasket{" +
                 "customerbasketid=" + customerbasketid +
-                ", customer=" + customer +
+                ", user=" + user +
                 ", product=" + product +
                 ", totalprice=" + totalprice +
                 '}';

@@ -26,6 +26,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
 
+    // mapping OneToOne relationship with Customerbasket to make it bidirectional
+
+    @OneToOne(mappedBy = "user")
+    private Customerbasket customerbasket;
+
     public User() {
     }
 
@@ -110,6 +115,13 @@ public class User {
         this.status = status;
     }
 
+    public Customerbasket getCustomerbasket() {
+        return customerbasket;
+    }
+
+    public void setCustomerbasket(Customerbasket customerbasket) {
+        this.customerbasket = customerbasket;
+    }
     @Override
     public String toString() {
         return "User{" +
