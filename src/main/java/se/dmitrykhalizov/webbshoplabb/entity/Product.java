@@ -22,20 +22,27 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
 
+    // ManyToOne relationship with CustomerBasket
+    @ManyToOne
+    @JoinColumn(name="customerbasket")
+    private Customerbasket customerbasket;
+
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<Orderline> orderlines;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, double price, int quantity,
-                   EnumSelection status) {
+    public Product(int id, String name, String description, double price,
+                   int quantity, EnumSelection status,
+                   Customerbasket customerbasket) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.status = status;
+        this.customerbasket = customerbasket;
     }
 
     public Product(String name, String description, double price, int quantity, EnumSelection status) {
@@ -90,6 +97,14 @@ public class Product {
         this.status = status;
     }
 
+    public Customerbasket getCustomerbasket() {
+        return customerbasket;
+    }
+
+    public void setCustomerbasket(Customerbasket customerbasket) {
+        this.customerbasket = customerbasket;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -99,6 +114,7 @@ public class Product {
                 ", price=" + price +
                 ", quantity=" + quantity +
                 ", status=" + status +
+                ", customer basket=" + customerbasket.getCustomerbasketid() +
                 '}';
     }
 }
