@@ -5,38 +5,40 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="product")
+@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="productid")
-    private int id;
-    @Column(name="name")
+    @Column(name = "productid")
+    private int productid;
+    @Column(name = "name")
     private String name;
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
-    @Column(name="price")
+    @Column(name = "price")
     private double price;
-    @Column(name="quantity")
+    @Column(name = "quantity")
     private int quantity;
     @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private EnumSelection status;
 
-    // ManyToOne relationship with CustomerBasket
+
     @ManyToOne
-    @JoinColumn(name="customerbasket")
+    @JoinColumn(name = "customerbasket_id")
     private Customerbasket customerbasket;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "product")
     private List<Orderline> orderlines;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, double price,
+    public Product(int productid, String name, String description, double price,
                    int quantity, EnumSelection status,
                    Customerbasket customerbasket) {
-        this.id = id;
+        this.productid = productid;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -53,8 +55,8 @@ public class Product {
         this.status = status;
     }
 
-    public int getId() {
-        return id;
+    public int getProductid() {
+        return productid;
     }
 
     public String getName() {
@@ -108,7 +110,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
+                "productid=" + productid +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

@@ -14,7 +14,6 @@ public class Customerbasket {
     @Column(name="customerbasketid")
     private int customerbasketid;
 
-    //One-to-One relationship with user
     @OneToOne
     @JoinColumn(name="customer")
     private User user;
@@ -24,8 +23,7 @@ public class Customerbasket {
     @Column(name="totalprice")
     private double totalprice;
 
-    //One-to-Many relationship with product
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "customerbasket")
+    @OneToMany(mappedBy = "customerbasket")
     private List<Product> products;
 
     public Customerbasket(){
