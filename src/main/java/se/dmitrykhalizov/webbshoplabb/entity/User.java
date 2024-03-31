@@ -2,6 +2,8 @@ package se.dmitrykhalizov.webbshoplabb.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -26,10 +28,15 @@ public class User {
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
 
-    // mapping OneToOne relationship with Customerbasket to make it bidirectional
-
     @OneToOne(mappedBy = "user")
     private Customerbasket customerbasket;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
+    @OneToMany(mappedBy = "user")
+    private List<Orderline> orderlines;
+
 
     public User() {
     }

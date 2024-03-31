@@ -3,6 +3,7 @@ package se.dmitrykhalizov.webbshoplabb.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="order")
@@ -13,17 +14,19 @@ public class Order {
     private int orderid;
     @Column(name="date")
     private LocalDate date;
-    @Column(name="customer")
+    @Column(name="customer", insertable = false, updatable = false )
     private int customer;
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
     @Column(name="totalprice")
     private double totalprice;
 
-    // ONE-TO-ONE ODER - USER
-    @OneToOne
-    @JoinColumn(name="id")
+    @ManyToOne
+    @JoinColumn(name="customer")
     private User user;
+
+    @OneToMany(mappedBy = "order")
+    private List<Orderline> orderlines;
 
 
     public Order() {

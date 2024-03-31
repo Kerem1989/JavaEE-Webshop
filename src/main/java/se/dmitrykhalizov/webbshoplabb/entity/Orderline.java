@@ -9,22 +9,25 @@ public class Orderline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="orderlineid")
     private int id;
-    @Column(name="order")
-    private int order;
     @Column(name="quantity")
     private int quantity;
     @Column(name="totalprice")
     private double totalprice;
 
-    @ManyToOne
-    @JoinColumn(name = "product", referencedColumnName = "productid", nullable = false)
+    @OneToOne
+    @JoinColumn(name="productid")
     private Product product;
-
+    @ManyToOne
+    @JoinColumn(name="order")
+    private Order order;
+    @ManyToOne
+    @JoinColumn(name="userid")
+    private User user;
 
     public Orderline() {
     }
 
-    public Orderline(int id, int order, Product product, int quantity, double totalprice) {
+    public Orderline(int id, Order order, Product product, int quantity, double totalprice) {
         this.id = id;
         this.order = order;
         this.product = product;
@@ -36,11 +39,11 @@ public class Orderline {
         return id;
     }
 
-    public int getOrder() {
+    public Order getOrder() {
         return order;
     }
 
-    public void setOrder(int order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
