@@ -8,5 +8,6 @@ public enum EnumSelection {
     pending,
     shipped,
     delivered,
+    formercustomer,
 
 }

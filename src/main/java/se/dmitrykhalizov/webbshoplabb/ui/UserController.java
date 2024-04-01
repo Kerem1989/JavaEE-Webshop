@@ -30,6 +30,8 @@ public class UserController {
             return "menupageadmin";
         } else if (user.equals("ok") && userService.getUser().getStatus().equals(EnumSelection.customer)) {
             return "menupagecustomer";
+        } else if (user.equals("ok") && userService.getUser().getStatus().equals(EnumSelection.formercustomer)) {
+            return "menupageformercustomer";
         }
         return "showloginpage";
     }
