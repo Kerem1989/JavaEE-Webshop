@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import se.dmitrykhalizov.webbshoplabb.entity.EnumSelection;
 import se.dmitrykhalizov.webbshoplabb.entity.Product;
 import se.dmitrykhalizov.webbshoplabb.repository.ProductRepo;
-import se.dmitrykhalizov.webbshoplabb.ui.IO;
 
 import java.util.List;
 
@@ -13,12 +12,10 @@ import java.util.List;
 @Service
 public class ProductService {
     ProductRepo productRepo;
-    IO io;
 
     @Autowired
-    public ProductService(ProductRepo productRepo, IO io) {
+    public ProductService(ProductRepo productRepo) {
         this.productRepo = productRepo;
-        this.io = io;
     }
 
     public String createProduct(String name, String description, double price,
