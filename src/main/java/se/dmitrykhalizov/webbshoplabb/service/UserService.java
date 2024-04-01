@@ -5,18 +5,15 @@ import org.springframework.stereotype.Service;
 import se.dmitrykhalizov.webbshoplabb.entity.EnumSelection;
 import se.dmitrykhalizov.webbshoplabb.entity.User;
 import se.dmitrykhalizov.webbshoplabb.repository.UserRepo;
-import se.dmitrykhalizov.webbshoplabb.ui.IO;
 
 @Service
 public class UserService {
     UserRepo userRepo;
-    IO io;
     User user;
 
     @Autowired
-    public UserService(UserRepo userRepo, IO io) {
+    public UserService(UserRepo userRepo) {
         this.userRepo = userRepo;
-        this.io = io;
     }
 
     public String login(String username, String password) {
