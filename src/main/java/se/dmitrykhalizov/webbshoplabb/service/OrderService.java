@@ -20,7 +20,7 @@ public OrderService(OrderRepo orderRepo) {
         return orderRepo.findAll();
     }
 
-    public List <Order> displayOrdersByUserId(int userId) {
-        return orderRepo.findOrdersByUser(userId);
+    public List <Order> displayOrdersByUserId(int userid) {
+        return orderRepo.findOrdersByUserUserid(userid);
     }
 }

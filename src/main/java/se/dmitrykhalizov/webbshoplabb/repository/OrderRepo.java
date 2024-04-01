@@ -6,5 +6,5 @@ import se.dmitrykhalizov.webbshoplabb.entity.Order;
 import java.util.List;
 
 public interface OrderRepo extends JpaRepository <Order, Integer> {
-    List<Order> findOrdersByUser(int userId);
+    List<Order> findOrdersByUserUserid(int userid);
 }
