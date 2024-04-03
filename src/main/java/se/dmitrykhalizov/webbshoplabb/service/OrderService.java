@@ -33,11 +33,9 @@ public class OrderService {
     public String placeOrder(Product product, int quantity) {
         User currentUser = userService.getUser();
         if (currentUser == null) {
-            // Handle the case when no user is logged in
             return "No user logged in";
         }
 
-        // Retrieve the product from the database based on the product's ID to ensure uniqueness
         Product selectedProduct = productRepo.findById(product.getProductid()).orElse(null);
         if (selectedProduct == null) {
             return "Product not found";
@@ -46,17 +44,15 @@ public class OrderService {
         LocalDate date = LocalDate.now();
 
         EnumSelection status = EnumSelection.pending;
-        double totalPrice = selectedProduct.getPrice() * quantity; // Calculate the total price
+        double totalPrice = selectedProduct.getPrice() * quantity;
 
-        // Create a new order and save it
         Order order = new Order();
         order.setDate(date);
-        order.setUser(currentUser); // Set the user field instead of the customer field
+        order.setUser(currentUser);
         order.setStatus(status);
         order.setTotalprice(totalPrice);
         orderRepo.save(order);
 
-        // Create an orderline for the selected product and save it
         Orderline orderLine = new Orderline();
         orderLine.setOrder(order);
         orderLine.setUser(currentUser);
