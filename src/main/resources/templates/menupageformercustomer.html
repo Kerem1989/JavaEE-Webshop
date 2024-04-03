@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Former orders</title>
+    <title>Menu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,34 +12,12 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f2f2f2;
         }
 
-        .product-list {
-            width: 80%;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .menu-container {
+            background-color: #6A5ACD;
+            width: 200px;
+            padding-top: 20px;
         }
 
         .logo {
@@ -47,39 +25,70 @@
             margin-bottom: 20px;
         }
 
-        .logo img {
-            width: 100px;
+        .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
+        .menu li {
+            display: block;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu li:last-child {
+            border-bottom: none;
+        }
+
+        .menu li a {
+            display: block;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .menu li a:hover {
+            background-color: #483D8B;
+        }
+
+        /* Grön knapp */
+        .menu li a .green-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Grön ikon */
+        .menu li a .green-button::after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            background-color: white;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-<div class="product-list">
+<div class="menu-container">
     <div class="logo">
-        <img src="/images/TR.png" alt="TR logo">
+        <img src="/images/TR.png" alt="Tr logo">
     </div>
-    <h1>Below is a list of completed orders</h1>
-
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="deliveredorder : ${deliveredorders}">
-            <td th:text="${deliveredorders.name}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <ul class="menu">
+        <li>
+            <a href="http://localhost:8080/deliveredorders">Show completed orders
+                <button class="green-button"></button>
+            </a>
+        </li>
+    </ul>
 </div>
 </body>
 </html>
