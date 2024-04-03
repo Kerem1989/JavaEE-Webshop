@@ -29,7 +29,7 @@ public class Product {
     private Customerbasket customerbasket;
 
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",  fetch = FetchType.EAGER)
     private List<Orderline> orderlines;
 
     public Product() {
@@ -110,13 +110,8 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "productid=" + productid +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", status=" + status +
-                ", customer basket=" + customerbasket.getCustomerbasketid() +
                 '}';
     }
 }
