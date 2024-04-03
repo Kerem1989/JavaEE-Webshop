@@ -30,11 +30,9 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private Customerbasket customerbasket;
-
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
     private List<Order> orders;
-
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Orderline> orderlines;
 
 
@@ -129,6 +127,23 @@ public class User {
     public void setCustomerbasket(Customerbasket customerbasket) {
         this.customerbasket = customerbasket;
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public List<Orderline> getOrderlines() {
+        return orderlines;
+    }
+
+    public void setOrderlines(List<Orderline> orderlines) {
+        this.orderlines = orderlines;
+    }
+
     @Override
     public String toString() {
         return "User{" +

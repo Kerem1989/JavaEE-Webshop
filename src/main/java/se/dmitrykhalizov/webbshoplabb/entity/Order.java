@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,8 @@ public class Order {
     private double totalprice;
 
     @ManyToOne
-    @JoinColumn(name="customer")
+    @JoinColumn(name="customer", referencedColumnName = "userid")
+
     private User user;
 
     @OneToMany(mappedBy = "order")
@@ -79,8 +80,17 @@ public class Order {
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Orderline> getOrderlines() {
+        return orderlines;
+    }
+
+    public void setOrderlines(List<Orderline> orderlines) {
+        this.orderlines = orderlines;
     }
 
     @Override
@@ -91,7 +101,6 @@ public class Order {
                 ", customer=" + customer +
                 ", status=" + status +
                 ", totalprice=" + totalprice +
-                ", user=" + user +
                 '}';
     }
 }

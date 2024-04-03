@@ -3,25 +3,25 @@ package se.dmitrykhalizov.webbshoplabb.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="orderline")
+@Table(name = "orderline")
 public class Orderline {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="orderlineid")
+    @Column(name = "orderlineid")
     private int id;
-    @Column(name="quantity")
+    @Column(name = "quantity")
     private int quantity;
-    @Column(name="totalprice")
+    @Column(name = "totalprice")
     private double totalprice;
 
-    @OneToOne
-    @JoinColumn(name="productid")
+    @ManyToOne
+    @JoinColumn(name = "product", referencedColumnName = "productid")
     private Product product;
     @ManyToOne
-    @JoinColumn(name="order")
+    @JoinColumn(name = "ordernumber", referencedColumnName = "orderid")
     private Order order;
     @ManyToOne
-    @JoinColumn(name="userid")
+    @JoinColumn(name = "userid", referencedColumnName = "userid")
     private User user;
 
     public Orderline() {
@@ -71,16 +71,16 @@ public class Orderline {
         this.totalprice = totalprice;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {
-        return "Orderline{" +
-                "id=" + id +
-                ", order=" + order +
-                ", product=" + product +
-                ", quantity=" + quantity +
-                ", totalprice=" + totalprice +
-
-                '}';
+        return "\nProduct: " + product.getName() + ", Quantity: " + quantity + ", Total price: " + totalprice;
     }
 }
