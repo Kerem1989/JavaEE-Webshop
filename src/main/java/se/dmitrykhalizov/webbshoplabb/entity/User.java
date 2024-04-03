@@ -30,10 +30,8 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private Customerbasket customerbasket;
-
     @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
     private List<Order> orders;
-
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Orderline> orderlines;
 

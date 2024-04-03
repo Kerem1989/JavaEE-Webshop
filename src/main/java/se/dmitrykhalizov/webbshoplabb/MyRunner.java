@@ -17,6 +17,16 @@ import java.time.LocalDate;
 @Component
 public class MyRunner implements CommandLineRunner {
 
+    private final UserService userService;
+    private final CustomerbasketService customerbasketService;
+    private final ProductService productService;
+
+    public MyRunner(UserService userService, CustomerbasketService customerbasketService, ProductService productService) {
+        this.userService = userService;
+        this.customerbasketService = customerbasketService;
+        this.productService = productService;
+    }
+
     @Override
     public void run(String[] args) {
 

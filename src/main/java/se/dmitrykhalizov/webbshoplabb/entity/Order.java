@@ -23,6 +23,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name="customer", referencedColumnName = "userid")
+
     private User user;
 
     @OneToMany(mappedBy = "order")
