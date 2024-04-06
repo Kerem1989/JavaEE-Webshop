@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.dmitrykhalizov.webbshoplabb.entity.EnumSelection;
-import se.dmitrykhalizov.webbshoplabb.entity.User;
 import se.dmitrykhalizov.webbshoplabb.service.UserService;
 
 @Controller
