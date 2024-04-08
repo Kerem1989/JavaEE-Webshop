@@ -28,7 +28,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
 
-    @OneToOne(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private Customerbasket customerbasket;
     @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
     private List<Order> orders;

@@ -8,7 +8,6 @@ import se.dmitrykhalizov.webbshoplabb.repository.OrderlineRepo;
 import se.dmitrykhalizov.webbshoplabb.repository.ProductRepo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

@@ -14,30 +14,25 @@ public class Customerbasket {
     @Column(name="customerbasketid")
     private int customerbasketid;
 
-    @OneToOne
-    @JoinColumn(name="customer")
+    @ManyToOne
+    @JoinColumn(name="userid")
     private User user;
 
-    @Column(name="product")
-    private int product;
-    @Column(name="totalprice")
-    private double totalprice;
+    @ManyToOne
+    @JoinColumn(name="prouductid")
+    private Product product;
 
-    @OneToMany(mappedBy = "customerbasket")
-    private List<Product> products;
+    private int quantity;
 
-    public Customerbasket(){
-    }
-
-    public Customerbasket(int customerbasketid, User user, int product, double totalprice) {
-        this.customerbasketid = customerbasketid;
-        this.user = user;
-        this.product = product;
-        this.totalprice = totalprice;
+    public Customerbasket() {
     }
 
     public int getCustomerbasketid() {
         return customerbasketid;
+    }
+
+    public void setCustomerbasketid(int customerbasketid) {
+        this.customerbasketid = customerbasketid;
     }
 
     public User getUser() {
@@ -48,29 +43,19 @@ public class Customerbasket {
         this.user = user;
     }
 
-    public int getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(int product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
-    public double getTotalprice() {
-        return totalprice;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setTotalprice(double totalprice) {
-        this.totalprice = totalprice;
-    }
-
-    @Override
-    public String toString() {
-        return "Customerbasket{" +
-                "customerbasketid=" + customerbasketid +
-                ", user=" + user +
-                ", product=" + product +
-                ", totalprice=" + totalprice +
-                '}';
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
