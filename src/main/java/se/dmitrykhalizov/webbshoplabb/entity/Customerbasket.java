@@ -58,4 +58,14 @@ public class Customerbasket {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Customerbasket{" +
+                "customerbasketid=" + customerbasketid +
+                ", user=" + user.getUsername() +
+                ", product=" + product.getName() +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

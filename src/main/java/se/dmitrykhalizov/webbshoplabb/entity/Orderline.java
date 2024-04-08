@@ -11,48 +11,31 @@ public class Orderline {
     private int id;
     @Column(name = "quantity")
     private int quantity;
+
+    private double productCost;
+
     @Column(name = "totalprice")
-    private double totalprice;
+    private double unitPrice;
+
+    private double subTotal;
 
     @ManyToOne
-    @JoinColumn(name = "product", referencedColumnName = "productid")
+    @JoinColumn(name = "productid")
     private Product product;
+
     @ManyToOne
-    @JoinColumn(name = "ordernumber", referencedColumnName = "orderid")
+    @JoinColumn(name = "orderid")
     private Order order;
-    @ManyToOne
-    @JoinColumn(name = "userid", referencedColumnName = "userid")
-    private User user;
 
     public Orderline() {
-    }
-
-    public Orderline(int id, Order order, Product product, int quantity, double totalprice) {
-        this.id = id;
-        this.order = order;
-        this.product = product;
-        this.quantity = quantity;
-        this.totalprice = totalprice;
     }
 
     public int getId() {
         return id;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getQuantity() {
@@ -63,24 +46,43 @@ public class Orderline {
         this.quantity = quantity;
     }
 
-    public double getTotalprice() {
-        return totalprice;
+    public double getProductCost() {
+        return productCost;
     }
 
-    public void setTotalprice(double totalprice) {
-        this.totalprice = totalprice;
+    public void setProductCost(double productCost) {
+        this.productCost = productCost;
     }
 
-    public User getUser() {
-        return user;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    @Override
-    public String toString() {
-        return "\nProduct: " + product.getName() + ", Quantity: " + quantity + ", Total price: " + totalprice;
+    public double getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

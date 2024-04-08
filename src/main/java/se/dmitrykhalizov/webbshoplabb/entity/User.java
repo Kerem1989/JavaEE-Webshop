@@ -27,13 +27,8 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
-
-    @OneToMany(mappedBy = "user")
-    private Customerbasket customerbasket;
     @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
     private List<Order> orders;
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Orderline> orderlines;
 
 
     public User() {
@@ -120,28 +115,12 @@ public class User {
         this.status = status;
     }
 
-    public Customerbasket getCustomerbasket() {
-        return customerbasket;
-    }
-
-    public void setCustomerbasket(Customerbasket customerbasket) {
-        this.customerbasket = customerbasket;
-    }
-
     public List<Order> getOrders() {
         return orders;
     }
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }
-
-    public List<Orderline> getOrderlines() {
-        return orderlines;
-    }
-
-    public void setOrderlines(List<Orderline> orderlines) {
-        this.orderlines = orderlines;
     }
 
     @Override

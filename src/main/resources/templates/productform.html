@@ -61,7 +61,7 @@
             width: 100px;
         }
         .navbar {
-            background-color: #483D8B; /* Dark purple color */
+            background-color: #483D8B;
         }
 
         .navbar-brand img {
@@ -97,27 +97,48 @@
             </div>
         </nav>
     </div>
-    <h2>Manage Categories | [[${pageTitle}]] </h2>
+    <h2>Manage Products | [[${pageTitle}]] </h2>
 </div>
-<form th:action="@{/categories/save}" method="post" style="max-width: 700px; margin: 0 auto"
-      th:object="${category}">
-    <div class="border border-secondary rounded p-3">
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Name:</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" th:field="*{name}" required minlength="1" maxlength="128"/>
-            </div>
+<form th:action="@{/products/save}" method="post" style="max-width: 700px; margin: 0 auto"
+      th:object="${product}";>
+    <input type="hidden" th:field="*{productid}">
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Product Name:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" th:field="*{name}" required minlength="8" maxlength="256"/>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Enabled:</label>
-            <div class="col-sm-8">
-                <input type="checkbox" th:field="*{enabled}"/>
-            </div>
-            <div class="text-center">
-                <input type="submit" class="btn btn-primary m-3" value="Save">
-                <input type="button" class="btn btn-secondary" value="Cancel" id="buttonCancel">
-            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Description:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" th:field="*{description}" required minlength="8" maxlength="256"/>
         </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Category:</label>
+        <div class="col-sm-8">
+            <select class="form-control" th:field="*{category}">
+                <th:block th:each="category: ${listCategories}">
+                    <option th:value="${category.id}" th:text="${category.name}"></option>
+                </th:block>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">In stock:</label>
+        <div class="col-sm-8">
+            <input type="checkbox" th:field="*{inStock}"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Price:</label>
+        <div class="col-sm-8">
+            <input type="number" class="form-control" th:field="*{price} "/>
+        </div>
+    </div>
+    <div class="text-center">
+        <input type="submit" class="btn btn-primary m-3" value="Save">
+        <input type="button" class="btn btn-secondary" value="Cancel" id="buttonCancel">
     </div>
 </form>
 <div class="modal fade text-center" id="modalDialog">
@@ -136,20 +157,18 @@
 
         </div>
     </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#buttonCancel').on("click", function () {
-            window.location = "[[@{/users}]]";
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".link-delete").on("click", function (e) {
+                e.preventDefault();
+                link = $(this);
+                catId = link.attr("catId");
+                $("#yesButton").attr("href", link.attr("href"));
+                $("#confirmText").text("Are you sure you want to delete this category ID " + catId + "?");
+                $("#confirmModal").modal();
+            });
         });
-    });
-
-    function showModalDialog(title, message) {
-        $("#modal-title").text(title);
-        $("#modal-body").text(message);
-        $("#modalDialog").modal();
-    }
-</script>
+    </script>
 </div>
 </body>
 </html>
