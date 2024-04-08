@@ -19,8 +19,6 @@ public class Product {
     private double price;
     @Column(name = "instock")
     boolean InStock;
-    @Column(name = "dispatched")
-    private boolean dispatched;
 
     @ManyToOne
     @JoinColumn(name = "categoryid")
@@ -30,30 +28,33 @@ public class Product {
     @JoinColumn(name = "customerbasket_id")
     private Customerbasket customerbasket;
 
-    @OneToMany(mappedBy = "product",  fetch = FetchType.EAGER)
-    private List<Orderline> orderlines;
-
     public Product() {
     }
 
     public Product(int productid, String name, String description, double price,
-                   boolean InStock, boolean dispatched,
-                   Customerbasket customerbasket) {
+                   boolean InStock, Customerbasket customerbasket) {
         this.productid = productid;
         this.name = name;
         this.description = description;
         this.price = price;
         this.InStock = InStock;
-        this.dispatched = dispatched;
         this.customerbasket = customerbasket;
     }
 
-    public Product(String name, String description, double price, boolean InStock, boolean dispatched) {
+    public Product(int productid, String name, String description, double price, boolean inStock, Category category) {
+        this.productid = productid;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        InStock = inStock;
+        this.category = category;
+    }
+
+    public Product(String name, String description, double price, boolean InStock) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.InStock = InStock;
-        this.dispatched = dispatched;
     }
 
     public int getProductid() {
@@ -96,14 +97,6 @@ public class Product {
         InStock = inStock;
     }
 
-    public boolean isDispatched() {
-        return dispatched;
-    }
-
-    public void setDispatched(boolean dispatched) {
-        this.dispatched = dispatched;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -120,19 +113,11 @@ public class Product {
         this.customerbasket = customerbasket;
     }
 
-    public List<Orderline> getOrderlines() {
-        return orderlines;
-    }
-
-    public void setOrderlines(List<Orderline> orderlines) {
-        this.orderlines = orderlines;
-    }
-
     @Override
     public String toString() {
         return "Product{" +
+                "productid=" + productid +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
                 '}';
     }
 }

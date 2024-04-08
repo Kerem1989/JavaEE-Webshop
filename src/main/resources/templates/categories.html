@@ -83,13 +83,10 @@
             <div class="collapse navbar-collapse" id="topNavBar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/addproduct}">Add product</a>
+                        <a class="nav-link" th:href="@{/products}">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/categories}">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/products}">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/products}">Orders</a>
@@ -106,7 +103,7 @@
 <div th:if="${message != null}" class="alert alert-success text-center">
     <p th:text="${message}"></p>
 </div>
-<div>
+<div class="full-details">
     <table class="table table-bordered table-striped table-hover table-responsive-xl">
         <thead class="thead-dark">
         <tr>

@@ -25,20 +25,4 @@ public class OrderController {
     UserService userService;
     @Autowired
     ProductService productService;
-    @GetMapping("/deliveredorders")
-    public String deliveredOrders(Model model) {
-        List<Order> deliveredorders = orderService.displayOrdersByUserId(userService.getUser());
-        model.addAttribute("deliveredorders", deliveredorders);
-        return "completedorders";
-    }
-
-    @PostMapping("/products")
-    public String makeOrder(@RequestParam("productid") int productid,
-                            @RequestParam("quantity") int quantity,
-                            Model model) {
-        Product product = productService.getProductById(productid);
-        String order = orderService.placeOrder(product, quantity);
-        model.addAttribute("order", order);
-        return "showproductspage";
-    }
 }

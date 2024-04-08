@@ -9,7 +9,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 128, nullable = false, unique = true)
+    @Column(name = "name")
     private String name;
     private boolean enabled;
 

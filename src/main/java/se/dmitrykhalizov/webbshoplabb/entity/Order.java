@@ -3,62 +3,54 @@ package se.dmitrykhalizov.webbshoplabb.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="orderid")
+    @Column(name = "orderid")
     private int orderid;
-    @Column(name="date")
-    private LocalDate date;
-    @Column(name="customer", insertable = false, updatable = false )
-    private int customer;
+    @Column(name = "date")
+    private Date date;
     @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private EnumSelection status;
-    @Column(name="totalprice")
-    private double totalprice;
+
+    @Column(name = "productcost")
+    private double productCost;
+    @Column(name = "subtotal")
+    private double subtotal;
+    @Column(name = "total")
+    private double total;
 
     @ManyToOne
-    @JoinColumn(name="customer", referencedColumnName = "userid")
-
+    @JoinColumn(name = "userid")
     private User user;
-
     @OneToMany(mappedBy = "order")
-    private List<Orderline> orderlines;
-
+    private Set<Orderline> orderlines = new HashSet<>();
 
     public Order() {
     }
 
-    public Order(int id, LocalDate date, int customer, EnumSelection status, double totalprice) {
-        this.orderid = orderid;
-        this.date = date;
-        this.customer = customer;
-        this.status = status;
-        this.totalprice = totalprice;
-    }
-
-    public int getorderid() {
+    public int getOrderid() {
         return orderid;
     }
 
-    public LocalDate getDate() {
+    public void setOrderid(int orderid) {
+        this.orderid = orderid;
+    }
+
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
-    }
-
-    public int getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(int customer) {
-        this.customer = customer;
     }
 
     public EnumSelection getStatus() {
@@ -69,12 +61,28 @@ public class Order {
         this.status = status;
     }
 
-    public double getTotalprice() {
-        return totalprice;
+    public double getProductCost() {
+        return productCost;
     }
 
-    public void setTotalprice(double totalprice) {
-        this.totalprice = totalprice;
+    public void setProductCost(double productCost) {
+        this.productCost = productCost;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public User getUser() {
@@ -85,22 +93,11 @@ public class Order {
         this.user = user;
     }
 
-    public List<Orderline> getOrderlines() {
+    public Set<Orderline> getOrderlines() {
         return orderlines;
     }
 
-    public void setOrderlines(List<Orderline> orderlines) {
+    public void setOrderlines(Set<Orderline> orderlines) {
         this.orderlines = orderlines;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderid=" + orderid +
-                ", date=" + date +
-                ", customer=" + customer +
-                ", status=" + status +
-                ", totalprice=" + totalprice +
-                '}';
     }
 }
