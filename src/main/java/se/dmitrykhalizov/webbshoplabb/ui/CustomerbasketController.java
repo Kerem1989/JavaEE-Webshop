@@ -55,8 +55,6 @@ public class CustomerbasketController {
     @PostMapping("/addcustomerbasket")
     public String addCustomerBasket(@RequestParam int customerbasketid, Model model) {
         User user = userService.getUser();
-        Customerbasket customerbasket = new Customerbasket(customerbasketid, user, 0, 0.0);
-        customerbasketService.createCustomerbasket(customerbasket);
         model.addAttribute("resultAddCustomerbasket", "Customer basket added successfully");
         return "addcustomerbasketpage";
     }

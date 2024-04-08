@@ -2,7 +2,6 @@ package se.dmitrykhalizov.webbshoplabb.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.dmitrykhalizov.webbshoplabb.entity.EnumSelection;
 import se.dmitrykhalizov.webbshoplabb.entity.Product;
 import se.dmitrykhalizov.webbshoplabb.repository.ProductRepo;
 
@@ -18,13 +17,11 @@ public class ProductService {
         this.productRepo = productRepo;
     }
 
-    public String createProduct(String name, String description, double price,
-                                int quantity, EnumSelection status) {
-
-        productRepo.save(new Product(name, description, price, quantity, status));
-        return "Saved";
+    public String createProduct(String name, String description, double price, boolean InStock, boolean dispatched) {
+        Product product = new Product(name, description, price, InStock, dispatched);
+        productRepo.save(product);
+        return "Product created";
     }
-
     public List<Product> displayProducts() {
         return productRepo.findAll();
     }
