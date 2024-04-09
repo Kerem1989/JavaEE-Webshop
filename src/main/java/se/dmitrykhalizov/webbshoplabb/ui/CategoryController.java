@@ -44,5 +44,12 @@ public class CategoryController {
             redirectAttributes.addFlashAttribute("message", "The user ID " + id + " has been deleted successfully");
             return "redirect:/categories";
     }
+
+    @GetMapping("")
+    public String viewHomePage(Model model) {
+        List<Category> listCategories = service.listEnabled();
+        model.addAttribute("listCategories", listCategories);
+        return "menupagecustomer";
+    }
 }
 

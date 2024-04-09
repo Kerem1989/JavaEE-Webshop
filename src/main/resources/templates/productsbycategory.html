@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -23,7 +23,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" th:href="@{/}">
-                <img th:src="@{images/TR.png }">
+                <img th:src="@{/images/TR.png }">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBar">
                 <span class="navbar-toggler-icon"></span>
@@ -39,21 +39,27 @@
     </div>
 </div>
 <h2>Welcome to the Customer Page</h2>
-<div><h5>Shopping by Categories</h5>
+<div><h5>Products in Category| [[${pageTitle}]]</h5>
 </div>
 <div class="row">
-    <div class="col" th:each="cat : ${listCategories}">
-        <div><img th:src="@{images/StockComputer.jpg}" style="width: 80px; height: 80px;"></div>
-        <div>
-            <a th:href="@{'/c/' + ${cat.name}}">[[${cat.name}]]</a>
-        </div>
-        </div>
-</div>
 
+    <th:block th:each="product: ${listProducts}">
+        <div class="col-md-2">
+            <div>
+                <img th:src="@{/images/StockComputer.jpg}" style="width: 80px; height: 80px;">
+            <br/>
+            <b>[[${product.name}]]</b>
+        </div>
+        <div>
+            <span>$ [[${product.price}]]</span>
+        </div>
+        </div>
+
+    </th:block>
+</div>
 
 <div class="text-center">
     <p>Copyright &copy; Kerem & Dmitry</p>
-</div>
 </div>
 </body>
 </html>
