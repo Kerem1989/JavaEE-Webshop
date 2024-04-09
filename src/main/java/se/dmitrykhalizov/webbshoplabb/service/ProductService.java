@@ -50,4 +50,8 @@ public class ProductService {
             productRepo.deleteById(id);
         }
     }
+
+    public List<Product> findProductByCategory(String category) {
+        return productRepo.findProductByCategory(category);
+    }
 }

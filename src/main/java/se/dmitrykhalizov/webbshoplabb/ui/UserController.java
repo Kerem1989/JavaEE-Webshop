@@ -5,14 +5,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import se.dmitrykhalizov.webbshoplabb.entity.Category;
 import se.dmitrykhalizov.webbshoplabb.entity.EnumSelection;
+import se.dmitrykhalizov.webbshoplabb.service.CategoryService;
 import se.dmitrykhalizov.webbshoplabb.service.UserService;
+
+import java.util.List;
 
 @Controller
 public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping("login")
     public String firstForm(Model model) {
@@ -28,6 +34,8 @@ public class UserController {
         if (user.equals("ok") && userService.getUser().getStatus().equals(EnumSelection.admin)) {
             return "menupageadmin";
         } else if (user.equals("ok") && userService.getUser().getStatus().equals(EnumSelection.customer)) {
+            List<Category> listCategories = categoryService.listEnabled();
+            model.addAttribute("listCategories", listCategories);
             return "menupagecustomer";
         } else if (user.equals("ok") && userService.getUser().getStatus().equals(EnumSelection.formercustomer)) {
             return "menupageformercustomer";

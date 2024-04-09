@@ -63,4 +63,13 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/products";
     }
+
+    @GetMapping("/c/{name}")
+    public String viewCategory(@PathVariable("name") String name, Model model) {
+        Category category = categoryService.getCategory(name);
+        List<Product> listProducts = productService.findProductByCategory(name);
+        model.addAttribute("listProducts", listProducts);
+        model.addAttribute("pageTitle", category.getName());
+        return "productsbycategory";
+    }
 }
