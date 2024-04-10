@@ -19,12 +19,23 @@ public class Customerbasket {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="prouductid")
+    @JoinColumn(name="productid")
     private Product product;
 
     private int quantity;
 
     public Customerbasket() {
+    }
+
+    public Customerbasket(User user, Product product) {
+        this.user = user;
+        this.product = product;
+    }
+
+    public Customerbasket(User user, Product product, int quantity) {
+        this.user = user;
+        this.product = product;
+        this.quantity = quantity;
     }
 
     public int getCustomerbasketid() {

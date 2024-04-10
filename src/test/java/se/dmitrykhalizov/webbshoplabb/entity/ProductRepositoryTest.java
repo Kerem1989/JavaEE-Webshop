@@ -67,5 +67,12 @@ public class ProductRepositoryTest {
         assertThat(product).isNull();
     }
 
+    @Test
+    public void testFindByName () {
+        String name = "Canon 55A";
+        Product product = productRepo.findProductByName(name);
+        assertThat(product).isNotNull();
+    }
+
 
 }

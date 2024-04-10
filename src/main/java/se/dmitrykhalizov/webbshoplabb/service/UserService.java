@@ -40,4 +40,8 @@ public class UserService {
             return "User created";
         }
     }
+
+    public User getUser(int id) {
+        return userRepo.findUserByUserid(id);
+    }
 }

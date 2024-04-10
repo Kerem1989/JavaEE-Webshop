@@ -27,11 +27,25 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private EnumSelection status;
-    @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Order> orders;
 
 
     public User() {
+    }
+
+    public User(int userid, String firstname, String surname, String email, String address, String telephone,
+                String username, String password, EnumSelection status) {
+        this.userid = userid;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.email = email;
+        this.address = address;
+        this.telephone = telephone;
+        this.username = username;
+        this.password = password;
+        this.status = status;
+
     }
 
     public User(String firstname, String surname, String email, String address, String telephone,

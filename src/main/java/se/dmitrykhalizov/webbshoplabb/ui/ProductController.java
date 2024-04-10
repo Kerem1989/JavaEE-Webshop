@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import se.dmitrykhalizov.webbshoplabb.entity.Category;
 import se.dmitrykhalizov.webbshoplabb.entity.Product;
+import se.dmitrykhalizov.webbshoplabb.entity.User;
 import se.dmitrykhalizov.webbshoplabb.service.CategoryService;
 import se.dmitrykhalizov.webbshoplabb.service.ProductService;
+import se.dmitrykhalizov.webbshoplabb.service.UserService;
 
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class ProductController {
     ProductService productService;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    UserService userService;
 
 
     @GetMapping("/products")
@@ -72,4 +76,14 @@ public class ProductController {
         model.addAttribute("pageTitle", category.getName());
         return "productsbycategory";
     }
-}
+
+    @GetMapping("/p/{name}")
+    public String viewProduct(@PathVariable("name") String name, Model model) {
+        Product product = productService.getProductByName(name);
+        User user = userService.getUser();
+        model.addAttribute("product", product);
+        model.addAttribute("user", user);
+        model.addAttribute("pageTitle", product.getName());
+        return "productdetail";
+    }
+    }
