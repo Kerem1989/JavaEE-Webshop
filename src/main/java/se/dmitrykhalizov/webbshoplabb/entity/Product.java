@@ -31,6 +31,10 @@ public class Product {
     public Product() {
     }
 
+    public Product(int productid) {
+        this.productid = productid;
+    }
+
     public Product(int productid, String name, String description, double price,
                    boolean InStock, Customerbasket customerbasket) {
         this.productid = productid;

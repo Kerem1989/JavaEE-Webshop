@@ -46,9 +46,11 @@
     <th:block th:each="product: ${listProducts}">
         <div class="col-md-2">
             <div>
+                <a th:href="@{'/p/' + ${product.name}}">
                 <img th:src="@{/images/StockComputer.jpg}" style="width: 80px; height: 80px;">
             <br/>
             <b>[[${product.name}]]</b>
+                </a>
         </div>
         <div>
             <span>$ [[${product.price}]]</span>

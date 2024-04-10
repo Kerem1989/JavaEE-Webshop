@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Customer Page</title>
+    <style>
+        .navbar {
+            background-color: #483D8B;
+        }
+
+        .navbar-brand img {
+            width: 80px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container-fluid">
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" th:href="@{/}">
+                <img th:src="@{/images/TR.png }">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="navbar-nav">
+
+
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <div>
+            <img th:src="@{/images/StockComputer.jpg}" style="width: 200px; height: 200px;">
+        </div>
+    </div>
+    <div class="col-sm">
+        <div>
+            <h2>[[${product.name}]]</h2>
+        </div>
+        <div>
+            <span>Category: [[${product.category.name}]]</span>
+        </div>
+        <div>
+            <span>Price: $ [[${product.price}]]</span>
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div>
+            <span th:if="${product.inStock}" class="text-success"><b>In Stock</b></span>
+            <span th:unless="${product.inStock}" class="text-danger"><b>Out of Stock</b></span>
+        </div>
+        <div>
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link linkMinus" th:pid="${product.productid}" href=""><b>-</b></a>
+                    </li>
+                    <li class="page-item">
+                        <input type="text" th:value="1" th:id="'quantity' + ${product.productid}" onkeydown="return false;" class="form-control text-center"
+                               style="width: 55px">
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link linkPlus" th:pid="${product.productid}" href=""><b>+</b></a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+        <th:block th:if="${product.inStock}">
+            <div class="mt-3">
+                <!-- Start of form -->
+                <form method="POST" th:action="@{/basket/add}">
+                    <input type="hidden" name="productId" th:value="${product.productid}">
+                    <input type="number" name="quantity" th:value="1" min="1">
+                    <input type="hidden" name="userId" th:value="${user.userid}">
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form>
+                <!-- End of form -->
+            </div>
+        </th:block>
+    </div>
+
+</div>
+<div class="text-center">
+    <p>Copyright &copy; Kerem & Dmitry</p>
+</div>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    productid = "[[${product.productid}]]";
+</script>
+<script type="text/javascript" th:src="@{/javascript/quantitycontrol.js}"></script>
+</body>
+</html>
+
