@@ -50,4 +50,8 @@ public class ProductService {
     public List<Product> findProductByCategory(String category) {
         return productRepo.findProductByCategory(category);
     }
+
+    public List<Product> findByKeyword(String keyword) {
+        return productRepo.findByKeyword(keyword);
+    }
 }

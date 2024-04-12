@@ -103,6 +103,15 @@
 <div th:if="${message != null}" class="alert alert-success text-center">
     <p th:text="${message}"></p>
 </div>
+
+<div>
+    <form action="/search" method="get">
+        <input type="text" id="keyword" name="keyword" placeholder="Search for products...">
+        <input type="submit" value="Search">
+    </form>
+</div>
+
+<div class="full-details">
 <div class="full-details">
     <table class="table table-bordered table-striped table-hover table-responsive-xl">
         <thead class="thead-dark">
