@@ -16,11 +16,8 @@ public class EmailSenderService {
         message.setTo(toEmail);
         message.setText(body);
         message.setSubject(subject);
-
         javaMailSender.send(message);
-
         System.out.println("MAIL SENT SUCCESSFULLY");
-
 
 
     }

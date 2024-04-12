@@ -12,11 +12,10 @@ public class Orderline {
     @Column(name = "quantity")
     private int quantity;
 
-    private double productCost;
-
-    @Column(name = "totalprice")
+@Column(name = "unitprice")
     private double unitPrice;
 
+    @Column(name = "subtotal")
     private double subTotal;
 
     @ManyToOne
@@ -28,6 +27,15 @@ public class Orderline {
     private Order order;
 
     public Orderline() {
+    }
+
+    public Orderline(int id, int quantity, double unitPrice, double subTotal, Product product, Order order) {
+        this.id = id;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.subTotal = subTotal;
+        this.product = product;
+        this.order = order;
     }
 
     public int getId() {
@@ -44,14 +52,6 @@ public class Orderline {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public double getProductCost() {
-        return productCost;
-    }
-
-    public void setProductCost(double productCost) {
-        this.productCost = productCost;
     }
 
     public double getUnitPrice() {

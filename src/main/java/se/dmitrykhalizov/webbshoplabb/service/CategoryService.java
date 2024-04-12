@@ -20,10 +20,6 @@ public class CategoryService {
         categoryRepo.deleteById(id);
     }
 
-    public Category getCategory(Integer id) {
-        return categoryRepo.findById(id).get();
-    }
-
     public List<Category> listAll() {
         return categoryRepo.findAll();
     }

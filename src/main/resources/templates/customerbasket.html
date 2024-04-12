@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Customerbasket page</title>
+    <style>
+        .navbar {
+            background-color: #483D8B;
+        }
+
+        .navbar-brand img {
+            width: 80px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container-fluid">
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" th:href="@{/}">
+                <img th:src="@{images/TR.png }">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link  fas fa-customer-basket" th:href="@{/basket(userId=${user.userid})}">Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="text-center">
+    <h2>Your Customerbasket</h2>
+</div>
+<div class="row m-1">
+    <div class="col-sm-8">
+        <th:block th:each="item, status : ${customerbasketList}">
+            <div class="row border rounded p-1">
+                <div class="col-1">
+                    <div>[[${status.count}]]</div>
+                    <div>
+                        <form th:action="@{'/basket/delete/' + ${item.product.productid}}" method="post">
+                            <input type="hidden" name="userId" th:value="${user.userid}">
+                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Remove</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <img th:src="@{/images/StockComputer.jpg}" style="width: 200px; height: 200px;">
+                </div>
+                <div class="col-6">
+                    <div>
+                        <a th:href="@{'/p/' + ${item.product.name}}">
+                            <b>[[${item.product.name}]]</b>
+                        </a>
+                    </div>
+                    <div>
+                        <div>
+                            <span>Price: $ [[${item.product.price}]]</span>
+                        </div>
+                        <div>
+                            <span>Subtotal: $ [[${item.totalPrice}]]</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <form th:action="@{'/basket/update/' + ${item.product.productid} + '/' + ${item.quantity}}" method="post">
+                        <input type="hidden" name="productId" th:value="${item.product.productid}">
+                        <input type="hidden" name="quantity" th:value="${item.quantity}">
+                        <input type="hidden" name="userId" th:value="${user.userid}">
+                        <input type="number" name="quantityToUpdate" th:value="${item.quantity}" min="1" class="form-control text-center quantity" style="width: 55px">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row m-1">
+                &nbsp;
+            </div>
+        </th:block>
+    </div>
+    <div>
+        <div class="col-sm-4" th:unless="${#lists.isEmpty(customerbasketList)}">
+            <span class="h3">Estimated Total:</span>
+        </div>
+        <div class="col-sm-4" th:unless="${#lists.isEmpty(customerbasketList)}">
+            <span class="h3">$ [[${estimatedTotal}]]</span>
+        </div>
+        <div>
+                <form th:action="@{'/order/create/' + ${user.userid}}" method="post">
+                    <input type="hidden" name="userId" th:value="${user.userid}" />
+                    <button type="submit" class="btn btn-primary" th:unless="${#lists.isEmpty(customerbasketList)}">Checkout</button>
+                </form>
+
+        </div>
+    </div>
+</div>
+<div class="text-center" th:if="${#lists.isEmpty(customerbasketList)}">
+    <h3>Your basket is empty</h3>
+</div>
+<script type="text/javascript">
+    function updateEstimatedTotal() {
+        var total = 0;
+        $('.quantity').each(function() {
+            var quantity = parseInt($(this).val());
+            var price = parseFloat($(this).closest('.row').find('.price').text());
+            total += quantity * price;
+        });
+        $('#estimatedTotal').text(total.toFixed(2));
+    }
+
+    $(document).ready(function() {
+        $('.quantity').on('change', updateEstimatedTotal);
+        updateEstimatedTotal();
+    });
+</script>
+<script type="text/javascript" th:src="@{/javascript/quantitycontrol.js}"></script>
+</body>
+</html>

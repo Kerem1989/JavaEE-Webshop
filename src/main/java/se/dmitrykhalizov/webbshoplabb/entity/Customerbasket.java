@@ -79,4 +79,9 @@ public class Customerbasket {
                 ", quantity=" + quantity +
                 '}';
     }
+
+    @Transient
+    public double getTotalPrice() {
+        return product.getPrice() * quantity;
+    }
 }
