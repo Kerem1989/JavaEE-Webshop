@@ -25,11 +25,12 @@ public class UserService {
             return "Wrong username or password";
         }
     }
+
     public User getUser() {
         return user;
     }
 
-    public String register(String firstname , String surname, String email, String address, String telephone, String username, String password, EnumSelection status) {
+    public String register(String firstname, String surname, String email, String address, String telephone, String username, String password, EnumSelection status) {
         boolean userExist = userRepo.existsUserByUsername(username);
         if (userExist) {
             return "User already exists";
@@ -44,4 +45,5 @@ public class UserService {
     public User getUser(int id) {
         return userRepo.findUserByUserid(id);
     }
+
 }

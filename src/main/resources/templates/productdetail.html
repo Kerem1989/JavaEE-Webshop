@@ -79,27 +79,17 @@
         </div>
         <th:block th:if="${product.inStock}">
             <div class="mt-3">
-                <!-- Start of form -->
                 <form method="POST" th:action="@{/basket/add}">
                     <input type="hidden" name="productId" th:value="${product.productid}">
                     <input type="number" name="quantity" th:value="1" min="1">
                     <input type="hidden" name="userId" th:value="${user.userid}">
                     <button type="submit" class="btn btn-primary">Add to Cart</button>
                 </form>
-                <!-- End of form -->
             </div>
         </th:block>
     </div>
 
 </div>
-<div class="text-center">
-    <p>Copyright &copy; Kerem & Dmitry</p>
-</div>
-<script type="text/javascript">
-    contextPath = "[[@{/}]]";
-    productid = "[[${product.productid}]]";
-</script>
-<script type="text/javascript" th:src="@{/javascript/quantitycontrol.js}"></script>
 </body>
 </html>
 

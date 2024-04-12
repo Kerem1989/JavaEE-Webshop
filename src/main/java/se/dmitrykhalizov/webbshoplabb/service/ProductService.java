@@ -22,10 +22,6 @@ public class ProductService {
         return productRepo.findAll();
     }
 
-    public List<Product> displayProducts() {
-        return productRepo.findAll();
-    }
-
     public Product getProductByName(String name) {
         return productRepo.findProductByName(name);
     }

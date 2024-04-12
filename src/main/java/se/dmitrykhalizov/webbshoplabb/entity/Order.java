@@ -16,15 +16,10 @@ public class Order {
     @Column(name = "orderid")
     private int orderid;
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private EnumSelection status;
-
-    @Column(name = "productcost")
-    private double productCost;
-    @Column(name = "subtotal")
-    private double subtotal;
     @Column(name = "total")
     private double total;
 
@@ -37,6 +32,15 @@ public class Order {
     public Order() {
     }
 
+    public Order(int orderid, LocalDate date, EnumSelection status, double total, User user, Set<Orderline> orderlines) {
+        this.orderid = orderid;
+        this.date = date;
+        this.status = status;
+        this.total = total;
+        this.user = user;
+        this.orderlines = orderlines;
+    }
+
     public int getOrderid() {
         return orderid;
     }
@@ -45,11 +49,11 @@ public class Order {
         this.orderid = orderid;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -59,22 +63,6 @@ public class Order {
 
     public void setStatus(EnumSelection status) {
         this.status = status;
-    }
-
-    public double getProductCost() {
-        return productCost;
-    }
-
-    public void setProductCost(double productCost) {
-        this.productCost = productCost;
-    }
-
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
     }
 
     public double getTotal() {
