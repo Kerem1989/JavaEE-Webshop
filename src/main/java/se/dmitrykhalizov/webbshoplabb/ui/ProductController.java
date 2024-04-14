@@ -86,4 +86,23 @@ public class ProductController {
         model.addAttribute("pageTitle", product.getName());
         return "productdetail";
     }
+
+    @GetMapping("/search")
+    public String showSearchPage(@RequestParam(value="keyword", required = false)
+                                 String keyword, Model model) {
+        if(keyword != null && !keyword.isEmpty()) {
+            System.out.println("Keyword: " + keyword);
+            List<Product> products = productService.findByKeyword(keyword);
+            model.addAttribute("listProducts", products);
+            model.addAttribute("keyword", keyword);
+            System.out.println("Found products: " + products);
+        }
+        User user = userService.getUser();
+        model.addAttribute("user", user);
+
+        System.out.println("Keyword: " + keyword);
+        System.out.println("Found products: " + productService.findByKeyword(keyword));
+        System.out.println("User: " + user);
+        return "search";
     }
+}

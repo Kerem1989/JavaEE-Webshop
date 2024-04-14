@@ -26,8 +26,11 @@ public class CustomerbasketController {
     @Autowired
     ProductService productService;
 
-    @PostMapping("/basket/add")
-    public String addProductToBasket(@RequestParam int productId, @RequestParam int quantity, @RequestParam int userId, RedirectAttributes redirectAttributes) {
+    @PostMapping("/basket/add/{productId}")
+    public String addProductToBasket(@PathVariable int productId,
+                                     @RequestParam(defaultValue = "1") int quantity,
+                                     @RequestParam int userId,
+                                     RedirectAttributes redirectAttributes) {
         User user = userService.getUser(userId);
         int updatedQuantity = customerbasketService.addProduct(productId, quantity, user);
         redirectAttributes.addFlashAttribute("message", "Product added to basket. New quantity: " + updatedQuantity);
