@@ -46,4 +46,7 @@ public class UserService {
         return userRepo.findUserByUserid(id);
     }
 
+    public void logout() {
+        user = null;
+    }
 }

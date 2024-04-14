@@ -57,6 +57,12 @@ public class UserController {
         model.addAttribute("resultregister", resultRegister);
         return "registeruser";
     }
+
+    @GetMapping("logout")
+    public String logout() {
+        userService.logout();
+        return "showloginpage";
+    }
 }
 
 
