@@ -16,6 +16,8 @@ public class OrderService {
     private OrderRepo orderRepo;
     @Autowired
     private OrderlineRepo orderlineRepo;
+    @Autowired
+    private EmailSenderService emailSenderService;
 
     public Order createOrder(User user, List<Customerbasket> customerbasketList) {
         Order order = new Order();
@@ -37,6 +39,12 @@ public class OrderService {
         }
         order.setTotal(total);
         orderRepo.save(order);
+
+        String toEmail = user.getEmail();
+        String subject = "Order confirmation";
+        String body = "Your order has been placed. Order ID: " + order.getOrderid();
+        emailSenderService.sendEmail(toEmail, subject, body);
+
         return order;
     }
 
