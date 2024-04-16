@@ -108,7 +108,7 @@
             <th>ID</th>
             <th>Date</th>
             <th>Ordered by</th>
-            <th>Enabled</th>
+            <th>Product shipment status</th>
             <th>Total price</th>
         </tr>
         </thead>
@@ -117,20 +117,20 @@
             <td th:text="${order.orderid}"></td>
             <td th:text="${order.date}"></td>
             <td th:text="${order.user.username}"></td>
-            <td th:text="${order.status}"></td>
-            <td th:text="${order.total}"></td>
+
             <td>
                 <a>
                     <a th:if="${order.status == true}" class="fas fa-check-circle fa-2x icon-green"
                        th:href="@{'order/' + ${order.orderid} + '/status/false'}"
-                       title="Disable this category"
+                       title="Reverse shipment"
                     ></a>
                     <a th:if="${order.status == false}" class="fas fa-circle fa-2x icon-dark"
                        th:href="@{'order/' + ${order.orderid} + '/status/true'}"
-                       title="Enable this category"
+                       title="Ship order"
                     ></a>
                 </a>
             </td>
+            <td th:text="${order.total}"></td>
         </tr>
         </tbody>
     </table>

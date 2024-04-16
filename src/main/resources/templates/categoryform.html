@@ -12,16 +12,6 @@
     <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <style>
-        .login-form {
-            width: 350px;
-            margin: auto; /* Add this line */
-            background-color: #6A5ACD;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
         .login-form h1 {
             font-size: 24px;
             margin-bottom: 20px;
@@ -75,7 +65,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" th:href="@{/}">
-                <img th:src="@{images/TR.png}">
+                <img th:src="@{/images/TR.png}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBar">
                 <span class="navbar-toggler-icon"></span>
@@ -89,7 +79,7 @@
                         <a class="nav-link" th:href="@{/categories}">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/products}">Orders</a>
+                        <a class="nav-link" th:href="@{/order}">Orders</a>
                     </li>
                     <li>
                         <a class="nav-link" th:href="@{/logout}">Logout</a>
@@ -145,13 +135,6 @@
             window.location = "[[@{/users}]]";
         });
     });
-
-    function showModalDialog(title, message) {
-        $("#modal-title").text(title);
-        $("#modal-body").text(message);
-        $("#modalDialog").modal();
-    }
 </script>
-</div>
 </body>
 </html>

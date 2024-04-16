@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import se.dmitrykhalizov.webbshoplabb.entity.*;
 import se.dmitrykhalizov.webbshoplabb.service.CustomerbasketService;
 import se.dmitrykhalizov.webbshoplabb.service.OrderService;
@@ -41,5 +42,13 @@ public class OrderController {
         List<Order> orderList = orderService.findAll();
         model.addAttribute("orderList", orderList);
         return "orders";
+    }
+
+    @GetMapping("/order/{orderid}/status/{status}")
+    public String updateOrderStatus(@PathVariable("orderid") Integer orderid, @PathVariable("status") boolean status, RedirectAttributes redirectAttributes) {
+        orderService.changeStatus(orderid, status);
+        String statusMessage = status ? "in stock" : "out of stock";
+        redirectAttributes.addFlashAttribute("message", statusMessage);
+        return "redirect:/order";
     }
 }
