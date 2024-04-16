@@ -60,4 +60,11 @@ public class CustomerbasketService {
         customerbasketRepo.deleteByUserAndProduct(userId, productId);
     }
 
+    public void clearBasket(User user) {
+        List<Customerbasket> customerbasketList = customerbasketRepo.findByUser(user);
+        for (Customerbasket customerbasket : customerbasketList) {
+            customerbasketRepo.delete(customerbasket);
+        }
+    }
+
 }
