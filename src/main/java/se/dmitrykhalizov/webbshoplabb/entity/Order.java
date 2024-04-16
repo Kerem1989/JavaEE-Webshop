@@ -17,9 +17,10 @@ public class Order {
     private int orderid;
     @Column(name = "date")
     private LocalDate date;
-    @Enumerated(EnumType.STRING)
+
     @Column(name = "status")
-    private EnumSelection status;
+    private boolean status;
+
     @Column(name = "total")
     private double total;
 
@@ -32,7 +33,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int orderid, LocalDate date, EnumSelection status, double total, User user, Set<Orderline> orderlines) {
+    public Order(int orderid, LocalDate date, Boolean status, double total, User user, Set<Orderline> orderlines) {
         this.orderid = orderid;
         this.date = date;
         this.status = status;
@@ -57,11 +58,11 @@ public class Order {
         this.date = date;
     }
 
-    public EnumSelection getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(EnumSelection status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

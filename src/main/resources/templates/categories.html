@@ -89,13 +89,14 @@
                         <a class="nav-link" th:href="@{/categories}">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/products}">Orders</a>
+                        <a class="nav-link" th:href="@{/order}">Orders</a>
                     </li>
                     <li>
                         <a class="nav-link" th:href="@{/logout}">Logout</a>
                     </li>
 
                 </ul>
+
 
             </div>
         </nav>
@@ -113,13 +114,13 @@
             <th>ID</th>
             <th>Name</th>
             <th>Enabled</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="cat: ${listCategories}">
             <td th:text="${cat.id}"></td>
             <td th:text="${cat.name}"></td>
-            <td th:text="${cat.enabled}"></td>
             <td>
                 <a>
                     <a th:if="${cat.enabled == true}" class="fas fa-check-circle fa-2x icon-green"

@@ -21,7 +21,7 @@ public class OrderService {
         Order order = new Order();
         order.setUser(user);
         order.setDate(LocalDate.now());
-        order.setStatus(EnumSelection.pending);
+        order.setStatus(false);
         orderRepo.save(order);
         double total = 0;
         for (Customerbasket customerbasket : customerbasketList) {
@@ -42,6 +42,12 @@ public class OrderService {
 
     public List<Order> findAll() {
         return orderRepo.findAll();
+    }
+
+    public void changeStatus(int orderId, Boolean status) {
+        Order order = orderRepo.findById(orderId).get();
+        order.setStatus(status);
+        orderRepo.save(order);
     }
 
 }
