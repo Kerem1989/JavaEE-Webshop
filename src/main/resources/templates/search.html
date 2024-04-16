@@ -31,7 +31,7 @@
             <td th:text="${product.description}"></td>
             <td th:text="${product.price}"></td>
             <td>
-                <form th:action="@{'/basket/add/{productId}(productId=${product.productid}' + '?userId=' + ${user.userid}}" method="post">
+                <form th:action="@{'/basket/add/' + ${product.productid} + '?userId=' + ${user.userid}}" method="post">
                     <input type="submit" value="Add to Basket" class="btn btn-primary">
                 </form>
             </td>
