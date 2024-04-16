@@ -79,7 +79,7 @@
         </div>
         <th:block th:if="${product.inStock}">
             <div class="mt-3">
-                <form method="POST" th:action="@{/basket/add}">
+                <form method="POST" th:action="@{/basket/add/{productId}(productId=${product.productid})}">
                     <input type="hidden" name="productId" th:value="${product.productid}">
                     <input type="number" name="quantity" th:value="1" min="1">
                     <input type="hidden" name="userId" th:value="${user.userid}">

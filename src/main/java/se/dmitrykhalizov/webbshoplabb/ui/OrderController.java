@@ -35,4 +35,11 @@ public class OrderController {
         Order order = orderService.createOrder(user, customerbasketList);
         return "showloginpage";
     }
+
+    @GetMapping("/order")
+    public String listOrders(Model model) {
+        List<Order> orderList = orderService.findAll();
+        model.addAttribute("orderList", orderList);
+        return "orders";
+    }
 }

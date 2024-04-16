@@ -40,4 +40,8 @@ public class OrderService {
         return order;
     }
 
+    public List<Order> findAll() {
+        return orderRepo.findAll();
+    }
+
 }

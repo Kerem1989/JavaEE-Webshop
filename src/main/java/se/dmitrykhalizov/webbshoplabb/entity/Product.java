@@ -25,7 +25,7 @@ public class Product {
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "customerbasket_id")
+    @JoinColumn(name = "customerbasketid")
     private Customerbasket customerbasket;
 
     public Product() {
