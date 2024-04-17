@@ -2,93 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Menu</title>
+    <title>Categories</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .menu-container {
+        .login-form {
+            width: 350px;
+            margin: auto;
             background-color: #6A5ACD;
-            width: 200px;
-            padding-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
 
-        .logo {
-            text-align: center;
+        .login-form h1 {
+            font-size: 24px;
             margin-bottom: 20px;
+            text-align: center;
         }
 
-        .menu {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+        .login-form p {
+            text-align: center;
         }
 
-        .menu li {
-            display: block;
-            border-bottom: 1px solid #ddd;
+        .login-form input[type='text'],
+        .login-form select {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
-        .menu li:last-child {
-            border-bottom: none;
-        }
-
-        .menu li a {
-            display: block;
+        .login-form input[type='submit'] {
+            background-color: #4CAF50;
             color: white;
-            padding: 14px 16px;
-            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
-        .menu li a:hover {
+        .login-form input[type='submit']:hover {
+            background-color: #45a049;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+        .navbar {
             background-color: #483D8B;
         }
 
-        /* Grön knapp */
-        .menu li a .green-button {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            background-color: green;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        /* Grön ikon */
-        .menu li a .green-button::after {
-            content: '';
-            display: block;
-            width: 10px;
-            height: 10px;
-            margin: 5px;
-            background-color: white;
-            border-radius: 50%;
+        .navbar-brand img {
+            width: 80px;
         }
     </style>
 </head>
 <body>
-<div class="menu-container">
-    <div class="logo">
-        <img src="/images/TR.png" alt="Tr logo">
-    </div>
-    <ul class="menu">
-        <li>
-            <a href="http://localhost:8080/deliveredorders">Show completed orders
-                <button class="green-button"></button>
+
+<div class="container-fluid">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" th:href="@{/}">
+                <img th:src="@{images/TR.png}">
             </a>
-        </li>
-    </ul>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="navbar-nav">
+                    <li>
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+    <h2>Order History</h2>
+    <div class="full-details">
+        <table class="table table-bordered table-striped table-hover table-responsive-xl">
+            <thead class="thead-dark">
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Ordered by</th>
+                <th>Total price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order: ${orderList}">
+                <td th:text="${order.orderid}"></td>
+                <td th:text="${order.date}"></td>
+                <td th:text="${order.user.username}"></td>
+                <td th:text="${order.total}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="full-details">
+        <table class="table table-bordered table-striped table-hover table-responsive-xl">
+            <thead class="thead-dark">
+            <tr>
+                <th>Order ID</th>
+                <th>Product</th>
+                <th>Ouantity</th>
+                <th>Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${orderlineList}">
+                <td th:text="${product.getOrder().getOrderid()}"></td>
+                <td th:text="${product.getProduct()}"></td>
+                <td th:text="${product.getQuantity()}"></td>
+                <td th:text="${product.getSubTotal()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

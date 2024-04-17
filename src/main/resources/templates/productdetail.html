@@ -30,8 +30,12 @@
             </button>
             <div class="collapse navbar-collapse" id="topNavBar">
                 <ul class="navbar-nav">
-
-
+                    <li class="nav-item">
+                        <a class="nav-link fas fa-customer-basket"  th:href="@{/basket}">Cart</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
                 </ul>
 
             </div>
@@ -59,23 +63,6 @@
         <div>
             <span th:if="${product.inStock}" class="text-success"><b>In Stock</b></span>
             <span th:unless="${product.inStock}" class="text-danger"><b>Out of Stock</b></span>
-        </div>
-        <div>
-            <nav>
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link linkMinus" th:pid="${product.productid}" href=""><b>-</b></a>
-                    </li>
-                    <li class="page-item">
-                        <input type="text" th:value="1" th:id="'quantity' + ${product.productid}" onkeydown="return false;" class="form-control text-center"
-                               style="width: 55px">
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link linkPlus" th:pid="${product.productid}" href=""><b>+</b></a>
-                    </li>
-                </ul>
-            </nav>
-
         </div>
         <th:block th:if="${product.inStock}">
             <div class="mt-3">

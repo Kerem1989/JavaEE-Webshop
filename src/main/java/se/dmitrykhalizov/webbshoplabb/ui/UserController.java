@@ -7,7 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.dmitrykhalizov.webbshoplabb.entity.Category;
 import se.dmitrykhalizov.webbshoplabb.entity.EnumSelection;
+import se.dmitrykhalizov.webbshoplabb.entity.Order;
+import se.dmitrykhalizov.webbshoplabb.entity.Orderline;
+import se.dmitrykhalizov.webbshoplabb.repository.OrderRepo;
 import se.dmitrykhalizov.webbshoplabb.service.CategoryService;
+import se.dmitrykhalizov.webbshoplabb.service.OrderLineService;
+import se.dmitrykhalizov.webbshoplabb.service.OrderService;
 import se.dmitrykhalizov.webbshoplabb.service.UserService;
 
 import java.util.List;
@@ -19,6 +24,12 @@ public class UserController {
     UserService userService;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    OrderRepo orderRepo;
+    @Autowired
+    OrderService orderService;
+    @Autowired
+    OrderLineService orderLineService;
 
     @GetMapping("login")
     public String firstForm(Model model) {
@@ -38,6 +49,10 @@ public class UserController {
             model.addAttribute("listCategories", listCategories);
             return "menupagecustomer";
         } else if (user.equals("ok") && userService.getUser().getStatus().equals(EnumSelection.formercustomer)) {
+            List<Order> orderList = orderRepo.findOrderByUserid(userService.getUser().getUserid());
+            List<Orderline> orderlineList = orderLineService.listOrderline(orderList.get(0));
+            model.addAttribute("orderList", orderList);
+            model.addAttribute("orderlineList", orderlineList);
             return "menupageformercustomer";
         }
         return "showloginpage";

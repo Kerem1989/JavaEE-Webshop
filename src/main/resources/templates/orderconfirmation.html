@@ -23,7 +23,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" th:href="@{/}">
-                <img th:src="@{images/TR.png }">
+                <img th:src="@{/images/TR.png }">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavBar">
                 <span class="navbar-toggler-icon"></span>
@@ -42,28 +42,42 @@
         </nav>
     </div>
 </div>
-<h2>Welcome to the Customer Page</h2>
+    <h2>Your order was a success.</h2>
+    <div class="full-details">
+        <table class="table table-bordered table-striped table-hover table-responsive-xl">
+            <thead class="thead-dark">
+            <tr>
+                <th>Date</th>
+                <th>Ordered by</th>
+                <th>Total price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order: ${orderList}">
+                <td th:text="${order.date}"></td>
+                <td th:text="${order.user.username}"></td>
+                <td th:text="${order.total}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-
-<div>
-    <form action="/search" method="get">
-        <input type="text" id="keyword" name="keyword" placeholder="Search for products...">
-        <input type="submit" value="Search">
-    </form>
-</div>
-
-
-<div><h5>Shopping by Categories</h5>
-</div>
-<div class="row">
-    <div class="col" th:each="cat : ${listCategories}">
-        <div><img th:src="@{images/StockComputer.jpg}" style="width: 80px; height: 80px;"></div>
-        <div>
-            <a th:href="@{'/c/' + ${cat.name}}">[[${cat.name}]]</a>
-        </div>
-        </div>
+<div class="full-details">
+    <table class="table table-bordered table-striped table-hover table-responsive-xl">
+        <thead class="thead-dark">
+        <tr>
+            <th>Product</th>
+            <th>Ouantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product: ${customerbasketList}">
+            <td th:text="${product.product}"></td>
+            <td th:text="${product.quantity}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </div>
 </body>
 </html>
-
