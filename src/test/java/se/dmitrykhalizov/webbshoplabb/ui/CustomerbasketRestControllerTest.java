@@ -19,10 +19,13 @@ class CustomerbasketRestControllerTest {
     @Autowired
     UserService userService;
 
+
+    // productid 16 måste matcha anstalet produkter i DB för testet att fungera
     @Test
     void addProductToBasket() {
         User user = userService.getUser(1);
-        int updatedQuantity = customerbasketService.addProduct(13, 1, user);
+        customerbasketService.clearBasket(user);
+        int updatedQuantity = customerbasketService.addProduct(16, 1, user);
         assertEquals(1, updatedQuantity);
     }
 
