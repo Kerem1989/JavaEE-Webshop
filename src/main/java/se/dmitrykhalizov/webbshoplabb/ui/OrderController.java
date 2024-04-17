@@ -30,11 +30,13 @@ public class OrderController {
 
 
     @PostMapping("/order/create/{userId}")
-    public String createOrder(@PathVariable int userId) {
+    public String createOrder(@PathVariable int userId, Model model) {
         User user = userService.getUser(userId);
         List<Customerbasket> customerbasketList = customerbasketService.listCustomerbasket(user);
-        Order order = orderService.createOrder(user, customerbasketList);
-        return "showloginpage";
+        Order orderList = orderService.createOrder(user, customerbasketList);
+        model.addAttribute("orderList", orderList);
+        customerbasketService.deletCustomerbasket(user);
+        return "orderconfirmation";
     }
 
     @GetMapping("/order")

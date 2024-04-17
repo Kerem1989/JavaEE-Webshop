@@ -123,7 +123,7 @@
             <th>Category</th>
             <th>Description</th>
             <th>In stock</th>
-            <th>Edit/Delete</th>
+            <th>Delete</th>
             <th>Price</th>
 
         </tr>
@@ -147,8 +147,6 @@
                 </a>
             </td>
             <td>
-                <a class="fas fa-edit fa-2x icon-green" th:href="@{'/products/edit/' + ${product.productid}}"
-                   title="Edit this product"></a>
                 <a class="fas fa-trash fa-2x icon-dark link-delete" th:href="@{'/products/delete/' + ${product.productid}}"
                    th:productId = "${product.productid}"
                    title="Delete this product"> </a>

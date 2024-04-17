@@ -119,9 +119,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "productid=" + productid +
-                ", name='" + name + '\'' +
-                '}';
+        return name + " | " +  description;
     }
 }
