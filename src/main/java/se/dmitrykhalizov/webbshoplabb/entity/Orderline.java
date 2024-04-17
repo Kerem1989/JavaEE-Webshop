@@ -85,4 +85,9 @@ public class Orderline {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    @Override
+    public String toString() {
+        return product.getName() + " x " + quantity + " = " + subTotal;
+    }
 }

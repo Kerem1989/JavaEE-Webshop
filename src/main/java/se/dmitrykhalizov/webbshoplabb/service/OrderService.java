@@ -42,7 +42,7 @@ public class OrderService {
 
         String toEmail = user.getEmail();
         String subject = "Order confirmation";
-        String body = "Your order has been placed. Order ID: " + order.getOrderid();
+        String body = "Your order has been placed. Order ID: " + order.getOrderid() + "Details: " + customerbasketList;
         emailSenderService.sendEmail(toEmail, subject, body);
 
         return order;
@@ -53,9 +53,23 @@ public class OrderService {
     }
 
     public void changeStatus(int orderId, Boolean status) {
-        Order order = orderRepo.findById(orderId).get();
-        order.setStatus(status);
-        orderRepo.save(order);
+            Order order = orderRepo.findById(orderId).get();
+            order.setStatus(status);
+            orderRepo.save(order);
+
+            String toEmail = order.getUser().getEmail();
+            String subject = "Order status update";
+            String body = "Your order with ID: " + order.getOrderid() + " is now sent";
+            emailSenderService.sendEmail(toEmail, subject, body);
+    }
+
+
+    public List<Order> findOrderByUserid(int userid) {
+        return orderRepo.findOrderByUserid(userid);
+    }
+
+    public List<Orderline> findOrderlinesByOrder(Order order) {
+        return orderRepo.findOrderlinesByOrder(order);
     }
 
 }

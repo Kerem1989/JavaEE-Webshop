@@ -60,4 +60,7 @@ public class CustomerbasketService {
         customerbasketRepo.deleteByUserAndProduct(userId, productId);
     }
 
+    public void deletCustomerbasket (User user){
+        customerbasketRepo.deleteCustomerbasketByUser(user);
+    }
 }

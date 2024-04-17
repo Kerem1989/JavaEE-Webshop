@@ -29,11 +29,9 @@ public class CustomerbasketController {
     @PostMapping("/basket/add/{productId}")
     public String addProductToBasket(@PathVariable int productId,
                                      @RequestParam(defaultValue = "1") int quantity,
-                                     @RequestParam int userId,
-                                     RedirectAttributes redirectAttributes) {
+                                     @RequestParam int userId) {
         User user = userService.getUser(userId);
         int updatedQuantity = customerbasketService.addProduct(productId, quantity, user);
-        redirectAttributes.addFlashAttribute("message", "Product added to basket. New quantity: " + updatedQuantity);
         Product product = productService.getProductById(productId);
         String productName = product.getName();
         return "redirect:/p/" + productName;
@@ -42,7 +40,6 @@ public class CustomerbasketController {
     @GetMapping("/basket")
     public String viewBasket(Model model) {
         User user = userService.getUser();
-        System.out.println("User: " + user);
         List<Customerbasket> customerbasketList = customerbasketService.listCustomerbasket(user);
         double estimatedTotal = 0;
         for (Customerbasket customerbasket : customerbasketList) {
