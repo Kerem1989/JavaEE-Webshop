@@ -63,8 +63,8 @@ class OrderRepoTest {
     void createOrderControllerTest() {
         User user = new User();
         when(userService.getUser(1)).thenReturn(user);
-        String viewName = orderController.createOrder(1);
-        assertEquals("showloginpage", viewName);
+        String viewName = orderController.createOrder(1, mock(Model.class));
+        assertEquals("orderconfirmation", viewName);
         verify(orderService, times(1)).createOrder(eq(user), anyList());
     }
 

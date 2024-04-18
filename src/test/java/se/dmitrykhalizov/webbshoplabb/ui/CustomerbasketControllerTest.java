@@ -12,19 +12,17 @@ import se.dmitrykhalizov.webbshoplabb.service.UserService;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class CustomerbasketRestControllerTest {
+class CustomerbasketControllerTest {
     @Autowired
     CustomerbasketService customerbasketService;
 
     @Autowired
     UserService userService;
 
-
-    // productid 16 måste matcha anstalet produkter i DB för testet att fungera
     @Test
     void addProductToBasket() {
         User user = userService.getUser(1);
-        customerbasketService.clearBasket(user);
+        customerbasketService.deleteActiveCustomerbasket(user);
         int updatedQuantity = customerbasketService.addProduct(16, 1, user);
         assertEquals(1, updatedQuantity);
     }

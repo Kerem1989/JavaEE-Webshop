@@ -31,4 +31,9 @@ public class CategoryService {
     public Category getCategory(String name) {
         return categoryRepo.getCategoriesByName(name);
     }
+
+    public Category newCategory() {
+        Category newCategory = new Category();
+        return newCategory;
+    }
 }

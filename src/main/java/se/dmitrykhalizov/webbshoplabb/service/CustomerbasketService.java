@@ -3,7 +3,6 @@ package se.dmitrykhalizov.webbshoplabb.service;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.SessionScope;
 import se.dmitrykhalizov.webbshoplabb.entity.Customerbasket;
 import se.dmitrykhalizov.webbshoplabb.entity.Product;
 import se.dmitrykhalizov.webbshoplabb.entity.User;
@@ -11,7 +10,6 @@ import se.dmitrykhalizov.webbshoplabb.repository.CustomerbasketRepo;
 import se.dmitrykhalizov.webbshoplabb.repository.ProductRepo;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -59,8 +57,16 @@ public class CustomerbasketService {
     public void deleteProduct(int productId, int userId) {
         customerbasketRepo.deleteByUserAndProduct(userId, productId);
     }
+
+    public double estimateTotalPrice(List<Customerbasket> customerbasketList){
+        double estimatedTotal = 0;
+        for (Customerbasket customerbasket : customerbasketList) {
+            estimatedTotal += customerbasket.getTotalPrice();
+        }
+        return estimatedTotal;
+    }
   
-    public void deletCustomerbasket (User user){
+    public void deleteActiveCustomerbasket(User user){
         customerbasketRepo.deleteCustomerbasketByUser(user);
     }
 }
