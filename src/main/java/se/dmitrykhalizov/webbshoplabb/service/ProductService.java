@@ -54,4 +54,10 @@ public class ProductService {
     public List<Product> findByKeyword(String keyword) {
         return productRepo.findByKeyword(keyword);
     }
+
+    public Product newProduct() {
+        Product product = new Product();
+        product.setInStock(true);
+        return product;
+    }
 }

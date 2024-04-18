@@ -25,7 +25,7 @@ public class CategoryController {
 
     @GetMapping("/categories/new")
     public String newCategory(Model model) {
-        Category category = new Category();
+        Category category = service.newCategory();
         model.addAttribute("category", category);
         model.addAttribute("pageTitle", "Create New Category");
         return "categoryform";

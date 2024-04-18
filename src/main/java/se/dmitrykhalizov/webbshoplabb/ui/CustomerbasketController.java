@@ -43,10 +43,7 @@ public class CustomerbasketController {
     public String viewBasket(Model model) {
         User user = userService.getUser();
         List<Customerbasket> customerbasketList = customerbasketService.listCustomerbasket(user);
-        double estimatedTotal = 0;
-        for (Customerbasket customerbasket : customerbasketList) {
-            estimatedTotal += customerbasket.getTotalPrice();
-        }
+        double estimatedTotal = customerbasketService.estimateTotalPrice(customerbasketList);
         model.addAttribute("estimatedTotal", estimatedTotal);
         model.addAttribute("customerbasketList", customerbasketList);
         model.addAttribute("user", user);

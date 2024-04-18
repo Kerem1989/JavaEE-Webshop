@@ -37,8 +37,7 @@ public class ProductController {
     @GetMapping("/products/new")
     public String newProduct(Model model) {
         List<Category> listCategories = categoryService.listAll();
-        Product product = new Product();
-        product.setInStock(true);
+        Product product = productService.newProduct();
         model.addAttribute("product", product);
         model.addAttribute("listCategories", listCategories);
         model.addAttribute("pageTitle", "Create New Product");

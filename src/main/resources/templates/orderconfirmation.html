@@ -61,23 +61,6 @@
             </tbody>
         </table>
     </div>
-
-<div class="full-details">
-    <table class="table table-bordered table-striped table-hover table-responsive-xl">
-        <thead class="thead-dark">
-        <tr>
-            <th>Product</th>
-            <th>Ouantity</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="product: ${customerbasketList}">
-            <td th:text="${product.product}"></td>
-            <td th:text="${product.quantity}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
 </div>
 </body>
 </html>
