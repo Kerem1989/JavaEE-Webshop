@@ -31,23 +31,22 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-
-
-This Java project is a comprehensive refactoring exercise focused on the Bulls & Cows guessing game. The primary objective of this exercise is to enhance the code's structure, testability, and maintainability by applying key software engineering principles and best practices.
-
-Project Overview
-This Spring Boot application is designed to integrate multiple weather APIs, providing users with comprehensive and up-to-date weather forecasts. The application leverages the strengths of various weather services to ensure the delivery of accurate and current weather data. As part of a school exam project, this application primarily focuses on providing weather data for a specific city in Sweden.
+This JavaEE webshop is a comprehensive e-commerce platform with features including user authentication, product browsing, shopping cart functionality, and admin capabilities. It is built using JavaEE technologies to provide a robust and scalable solution for online retail.
 
 <div>
-    <img src="images/pic.png" alt="Logo" width="512" height="416">
+    <img src="src/main/resources/static/images/login.png" alt="Logo" width="451" height="392">
+        <img src="src/main/resources/static/images/admin.png" alt="Logo" width="6" height="283">
+
+  <div>
+    <img src="src/main/resources/static/images/customer.png" alt="Logo" width="1339" height="556">
   </a>
 
-The main goals of this refactoring exercise are:
 
-* This Spring Boot application is designed to integrate multiple weather APIs, providing users with comprehensive and up-to-date weather forecasts. 
-* The application leverages the strengths of various weather services to ensure the delivery of accurate and current weather data. 
-* As part of a school exam project, this application primarily focuses on providing weather data for a specific city in Sweden.
+Features:
+* User Authentication: Users can sign up, log in, and manage their accounts securely.
+* Product Browsing: Browse through a wide range of products available in the store.
+* Shopping Cart: Add products to the shopping cart, update quantities, and proceed to checkout.
+* Admin Features: Admin users can manage products, view orders, and perform other administrative tasks.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
