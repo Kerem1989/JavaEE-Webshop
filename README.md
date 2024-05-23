@@ -31,15 +31,14 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This JavaEE webshop is a comprehensive e-commerce platform with features including user authentication, product browsing, shopping cart functionality, and admin capabilities. It is built using JavaEE technologies to provide a robust and scalable solution for online retail.
-
 <div>
-    <img src="src/main/resources/static/images/login.png" alt="Logo" width="451" height="392">
-        <img src="src/main/resources/static/images/admin.png" alt="Logo" width="6" height="283">
+    <p>This JavaEE webshop is a comprehensive e-commerce platform with features including user authentication, product browsing, shopping cart functionality, and admin capabilities. It is built using JavaEE technologies to provide a robust and scalable solution for online retail.</p>
+</div>
 
   <div>
-    <img src="src/main/resources/static/images/customer.png" alt="Logo" width="1339" height="556">
+    <img src="src/main/resources/static/images/admin.png" alt="Logo" width="667" height="292">
   </a>
+
 
 
 Features:
@@ -54,10 +53,12 @@ Features:
 <!-- TECHNOLOGIES USED -->
 ## Technologies used
 * [![Java][Java.com]][Java-url]
+* [![MySQL][MySQL.com]][MySQL-url]
 * [![Spring Boot][SpringBoot.com]][SpringBoot-url]
-* [![JSON][JSON.com]][JSON-url]
-* [![Maven][Maven.com]][Maven-url]
-* [![REST API][RestAPI.com]][RestAPI-url]
+* [![HTML][HTML.com]][HTML-url]
+* [![JavaScript][JavaScript.com]][JavaScript-url]
+* [![Thymeleaf][Thymeleaf.com]][Thymeleaf-url]
+
 
 
 
@@ -72,12 +73,13 @@ To run this project, you need the following software installed:
 
 * Java Development Kit (JDK) 11 or higher
 * Maven for managing dependencies and building the project
+* MySQL for database management
 
 ## Installation
 * Clone the repository
 * Build the project using Maven
 * Run the tests to ensure everything is set up correctly
-* To start the game, run the following command: java -jar target/weather-api-1.0-SNAPSHOT.jar
+* To start the application, run the following command: java -jar target/webshop-1.0-SNAPSHOT.jar
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -91,7 +93,7 @@ Distributed under the MIT License.
 ## Contact
 Kerem Bjälvenäs Tazedal - kerem.tazedal.89@gmail.com
 
-Project Link: [https://github.com/Kerem1989/spring-boot-weather-api](https://github.com/Kerem1989/spring-boot-weather-api)
+Project Link: [https://github.com/Kerem1989/JavaEE-Webshop](https://github.com/Kerem1989/JavaEE-Webshop)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
@@ -123,13 +125,13 @@ Special thanks to Dmitry Khalizov for his valuable contributions and collaborati
 [Java-url]: https://www.java.com
 [MySQL.com]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white
 [MySQL-url]: https://www.mysql.com
-[JSON.com]: https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white
-[JSON-url]: https://www.json.org
-[Maven.com]: https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white
-[Maven-url]: https://maven.apache.org
 [SpringBoot.com]: https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white
 [SpringBoot-url]: https://spring.io/projects/spring-boot
-[RestAPI.com]: https://img.shields.io/badge/REST_API-FF5733?style=for-the-badge&logo=rest&logoColor=white
-[RestAPI-url]: https://restfulapi.net
+[HTML.com]: https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[HTML-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
+[JavaScript.com]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+[Thymeleaf.com]: https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white
+[Thymeleaf-url]: https://www.thymeleaf.org
 
 
