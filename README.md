@@ -23,7 +23,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="images/tr.png" alt="Logo" width="212" height="162">
+    <img src="src/main/resources/static/images/TR.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Java EE Fictional TR Electronics Webshop</h3>
