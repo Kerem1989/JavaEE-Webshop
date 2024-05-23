@@ -57,7 +57,8 @@ Features:
 * [![Spring Boot][SpringBoot.com]][SpringBoot-url]
 * [![HTML][HTML.com]][HTML-url]
 * [![JavaScript][JavaScript.com]][JavaScript-url]
-* [![Thymeleaf][Thymeleaf.com]][Thymeleaf-url]
+* [![Thymeleaf][Thymeleaf.com]][Thymeleaf-url
+* [![Maven][Maven.com]][Maven-url]
 
 
 
@@ -133,5 +134,7 @@ Special thanks to Dmitry Khalizov for his valuable contributions and collaborati
 [JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Thymeleaf.com]: https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white
 [Thymeleaf-url]: https://www.thymeleaf.org
+[Maven.com]: https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white
+[Maven-url]: https://maven.apache.org
 
 
