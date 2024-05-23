@@ -57,7 +57,7 @@ Features:
 * [![Spring Boot][SpringBoot.com]][SpringBoot-url]
 * [![HTML][HTML.com]][HTML-url]
 * [![JavaScript][JavaScript.com]][JavaScript-url]
-* [![Thymeleaf][Thymeleaf.com]][Thymeleaf-url
+* [![Thymeleaf][Thymeleaf.com]][Thymeleaf-url]
 * [![Maven][Maven.com]][Maven-url]
 
 
