@@ -23,10 +23,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="images/logo.png" alt="Logo" width="212" height="162">
+    <img src="images/tr.png" alt="Logo" width="212" height="162">
   </a>
 
-  <h3 align="center">Multi-API Weather Forecast</h3>
+  <h3 align="center">Java EE Fictional TR Electronics Webshop</h3>
 </div>
 
 <!-- ABOUT THE PROJECT -->
